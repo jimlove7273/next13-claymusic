@@ -2,13 +2,19 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { albumList } from '@/app/constants';
+import { CartPanel } from '../CartPanel/CartPanel';
 
 export const TopNav = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [whichDrop, setWhichDrop] = useState('');
+  const [showCartPanel, setShowCartPanel] = useState(false);
 
   return (
     <nav className="w-full border border-b-slate-200">
+      <CartPanel
+        showCartPanel={showCartPanel}
+        setShowCartPanel={setShowCartPanel}
+      />
       <div className="container mx-auto">
         <div className="flex justify-between items-center px-3">
           <div>
@@ -37,7 +43,7 @@ export const TopNav = () => {
                 <div
                   className={`absolute flex pt-6 flex-col bg-white text-gray-700 w-32 ${
                     whichDrop === 'aboutus' ? '' : 'hidden'
-                  }`}
+                  } shadow-xl shadow-stone-500/50`}
                 >
                   <a className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer">
                     關於泥土音樂
@@ -54,9 +60,12 @@ export const TopNav = () => {
                   >
                     支持我們
                   </Link>
-                  <a className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer">
+                  <Link
+                    className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer"
+                    href="/privacy"
+                  >
                     隱私政策
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -76,7 +85,7 @@ export const TopNav = () => {
                   <div
                     className={`container mx-auto pt-6 text-gray-700 ${
                       whichDrop === 'products' ? '' : 'hidden'
-                    }`}
+                    } shadow-xl shadow-stone-500/50`}
                   >
                     <div className="p-5 grid grid-cols-4 bg-slate-100">
                       {albumList.map((album) => (
@@ -111,7 +120,7 @@ export const TopNav = () => {
                 <div
                   className={`absolute flex pt-6 flex-col bg-white text-gray-700 w-32 ${
                     whichDrop === 'concert' ? '' : 'hidden'
-                  }`}
+                  } shadow-xl shadow-stone-500/50`}
                 >
                   <a className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer">
                     近期行程
@@ -130,21 +139,26 @@ export const TopNav = () => {
               </Link>
             </div>
 
-            <div className="hidden md:block">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                />
-              </svg>
+            <div className="hidden md:block relative">
+              <button onClick={(e) => setShowCartPanel(true)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                  />
+                </svg>
+                <div className="absolute top-[-7px] right-[-5px] text-[8px] bg-blue-800 text-white py-[1px] px-[5px] rounded-full">
+                  2
+                </div>
+              </button>
             </div>
           </div>
           <div className="md:hidden flex items-center">
