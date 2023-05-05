@@ -17,10 +17,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <TopNav />
-        {children}
-        <Footer />
-        <FooterBottom />
+        <div className="relative min-h-[100vh]">
+          <div className="pb-[743px] md:pb-[580px] lg:pb-[370px]">
+            <TopNav />
+            <main>{children}</main>
+          </div>
+          <footer className="absolute w-full bottom-0">
+            <Footer />
+            <FooterBottom />
+          </footer>
+        </div>
       </body>
     </html>
   );
