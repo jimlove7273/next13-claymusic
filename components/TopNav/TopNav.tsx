@@ -14,20 +14,22 @@ export const TopNav = () => {
   return (
     <nav
       id="page-nav"
-      className="w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex"
+      className="md:fixed top-0 w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex"
     >
-      <CartPanel
-        showCartPanel={showCartPanel}
-        setShowCartPanel={setShowCartPanel}
-      />
+      {showCartPanel && (
+        <CartPanel
+          showCartPanel={showCartPanel}
+          setShowCartPanel={setShowCartPanel}
+        />
+      )}
       <div className="container mx-auto">
         <div className="flex justify-between h-full items-center px-3">
           <div>
-            <img src="/images/home_logoEng.png" width={240} />
+            <img src="/images/home_logoEng.png" width={240} alt="Logo" />
           </div>
-          <div className="flex h-full mb-2 items-end">
+          <div className="flex items-center h-full mb-2">
             <div className="hidden md:flex items-center text-gray-700">
-              <Link href="/" className="px-2 hover:bg-[#baccdb] cursor-pointer">
+              <Link href="/" className="px-2 hover:bg-[#a4cbed] cursor-pointer">
                 首頁
               </Link>
 
@@ -40,12 +42,12 @@ export const TopNav = () => {
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
-                  className={`px-2 hover:bg-[#baccdb] ${
+                  className={`px-2 hover:bg-[#a4cbed] ${
                     whichDrop === 'aboutus' ||
                     ['aboutclaymusic', 'supportus', 'privacy'].some((el) =>
                       pathName.includes(el),
                     )
-                      ? 'bg-[#baccdb]'
+                      ? 'bg-[#a4cbed]'
                       : ''
                   }`}
                   href="/"
@@ -53,30 +55,33 @@ export const TopNav = () => {
                   關於我們
                 </a>
                 <div
-                  className={`absolute flex pt-6 flex-col bg-[#baccdb] text-gray-700 w-32 ${
+                  className={`absolute flex pt-6 z-20 flex-col bg-[#a4cbed] text-gray-700 w-32 ${
                     whichDrop === 'aboutus' ? '' : 'hidden'
                   } shadow-xl shadow-stone-500/50`}
                 >
                   <Link
-                    className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer"
+                    className="p-2 bg-slate-100 hover:bg-[#a4cbed] cursor-pointer"
                     href="/aboutclaymusic"
                   >
                     關於泥土音樂
                   </Link>
-                  <a className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer">
+                  <a className="p-2 bg-slate-100 hover:bg-[#a4cbed] cursor-pointer">
                     我們的團隊
                   </a>
-                  <a className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer">
-                    聯絡我們
-                  </a>
                   <Link
-                    className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer"
+                    className="p-2 bg-slate-100 hover:bg-[#a4cbed] cursor-pointer"
+                    href="/contactus"
+                  >
+                    聯絡我們
+                  </Link>
+                  <Link
+                    className="p-2 bg-slate-100 hover:bg-[#a4cbed] cursor-pointer"
                     href="/supportus"
                   >
                     支持我們
                   </Link>
                   <Link
-                    className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer"
+                    className="p-2 bg-slate-100 hover:bg-[#a4cbed] cursor-pointer"
                     href="/privacy"
                   >
                     隱私政策
@@ -93,10 +98,10 @@ export const TopNav = () => {
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
-                  className={`px-2 hover:bg-[#baccdb] ${
+                  className={`px-2 hover:bg-[#a4cbed] ${
                     whichDrop === 'products' ||
                     ['album'].some((el) => pathName.includes(el))
-                      ? 'bg-[#baccdb]'
+                      ? 'bg-[#a4cbed]'
                       : ''
                   }`}
                   href="/"
@@ -104,7 +109,7 @@ export const TopNav = () => {
                   產品區
                 </a>
 
-                <div className="absolute left-0 w-full">
+                <div className="absolute left-0 w-full bg-[#a4cbed]">
                   <div
                     className={`pt-6 text-gray-700 ${
                       whichDrop === 'products' ? '' : 'hidden'
@@ -115,11 +120,11 @@ export const TopNav = () => {
                         <Link
                           key={album.chineseName}
                           href={album.link}
-                          className="p-1 pl-3 hover:bg-[#baccdb] cursor-pointer flex gap-2 items-center"
+                          className="p-1 pl-3 hover:bg-[#a4cbed] cursor-pointer flex gap-2 items-center"
                         >
                           <img
                             width="40"
-                            // alt={album.englishName}
+                            alt={album.englishName}
                             src={`/images/album/${album.albumCover}.jpeg`}
                           />
                           {album.chineseName}
@@ -142,10 +147,10 @@ export const TopNav = () => {
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
-                  className={`px-2 hover:bg-[#baccdb] ${
+                  className={`px-2 hover:bg-[#a4cbed] ${
                     whichDrop === 'concert' ||
                     ['concerts'].some((el) => pathName.includes(el))
-                      ? 'bg-[#baccdb]'
+                      ? 'bg-[#a4cbed]'
                       : ''
                   }`}
                   href="/"
@@ -153,29 +158,29 @@ export const TopNav = () => {
                   音樂會消息
                 </a>
                 <div
-                  className={`absolute flex pt-6 flex-col bg-[#baccdb] text-gray-700 w-32 ${
+                  className={`absolute flex pt-6 flex-col bg-[#a4cbed] text-gray-700 w-32 ${
                     whichDrop === 'concert' ? '' : 'hidden'
                   } shadow-xl shadow-stone-500/50`}
                 >
                   <Link
-                    className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer"
+                    className="p-2 bg-slate-100 hover:bg-[#a4cbed] cursor-pointer"
                     href="/concerts/check"
                   >
                     近期行程
                   </Link>
-                  <a className="p-2 bg-slate-100 hover:bg-[#baccdb] cursor-pointer">
+                  <a className="p-2 bg-slate-100 hover:bg-[#a4cbed] cursor-pointer">
                     全年音樂會
                   </a>
                 </div>
               </div>
 
-              <a className="px-2 hover:bg-[#baccdb]" href="/">
+              <a className="px-2 hover:bg-[#a4cbed]" href="/">
                 相片區
               </a>
               <Link
-                className={`px-2 hover:bg-[#baccdb] ${
+                className={`px-2 hover:bg-[#a4cbed] ${
                   ['supportus'].some((el) => pathName.includes(el))
-                    ? 'bg-[#baccdb]'
+                    ? 'bg-[#a4cbed]'
                     : ''
                 }`}
                 href="/supportus"
@@ -187,9 +192,9 @@ export const TopNav = () => {
             <div className="hidden md:block relative">
               <div
                 className="mt-1 cursor-pointer"
-                onClick={(e) => setShowCartPanel(true)}
+                onClick={(e) => setShowCartPanel((prev) => !prev)}
               >
-                <img width={25} src="/images/icon-cart.png" />
+                <img width={25} src="/images/icon-cart.png" alt="Cart" />
                 <div className="absolute w-[15px] h-[15px] top-[-1px] right-[-5px] text-[9px] text-center bg-[#fb7701] text-white rounded-full">
                   12
                 </div>
@@ -246,7 +251,11 @@ export const TopNav = () => {
               />
             </svg>
           </div>
-          <img className="relative w-[70%]" src="/images/home_logoEng.jpg" />
+          <img
+            className="relative w-[200px]"
+            alt="Logo"
+            src="/images/home_logoEng.jpg"
+          />
           <Link
             className="inline-block text-gray-800 font-bold relative py-1"
             href="/"
@@ -271,22 +280,25 @@ export const TopNav = () => {
               whichDrop === 'm-aboutus' ? '' : 'hidden'
             }`}
           >
-            <a className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer">
+            <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
               關於泥土音樂
             </a>
-            <a className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer">
+            <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
               我們的團隊
             </a>
-            <a className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer">
-              聯絡我們
-            </a>
             <Link
-              className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer"
+              className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer"
+              href="/contactus"
+            >
+              聯絡我們
+            </Link>
+            <Link
+              className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer"
               href="/supportus"
             >
               支持我們
             </Link>
-            <a className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer">
+            <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
               隱私政策
             </a>
           </div>
@@ -309,16 +321,18 @@ export const TopNav = () => {
             }`}
           >
             {albumList.map((album) => (
-              <a
+              <Link
                 key={album.chineseName}
-                className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer flex gap-2 items-center"
+                href={album.link}
+                className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer flex gap-2 items-center"
               >
                 <img
                   width="40"
+                  alt={album.englishName}
                   src={`/images/album/${album.albumCover}.jpeg`}
                 />
                 {album.chineseName}
-              </a>
+              </Link>
             ))}
           </div>
           {/** ----------------------------------------------------------------
@@ -339,10 +353,10 @@ export const TopNav = () => {
               whichDrop === 'm-concert' ? '' : 'hidden'
             }`}
           >
-            <a className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer">
+            <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
               近期行程
             </a>
-            <a className="relative py-1 pl-2 hover:bg-[#baccdb] cursor-pointer">
+            <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
               全年音樂會
             </a>
           </div>

@@ -1,4 +1,4 @@
-import './globals.css';
+import '../globals.css';
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,9 +20,9 @@ export default function RootLayout({
         <div className="relative min-h-[100vh]">
           <div className="pb-[743px] md:pb-[580px] lg:pb-[370px]">
             <TopNav />
-            <main>{children}</main>
+            <main className="mt-1 md:mt-20">{children}</main>
           </div>
-          <footer className="absolute w-full bottom-0">
+          <footer className="absolute w-full bottom-0 -z-10">
             <Footer />
             <FooterBottom />
           </footer>

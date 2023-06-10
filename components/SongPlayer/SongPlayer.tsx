@@ -1,12 +1,23 @@
 import React from 'react';
 
-const SongPlayer = () => {
+type SongInfo = {
+  chineseName: string;
+  englishName: string;
+  albumCover: string;
+};
+
+type SongPlayerProps = {
+  songInfo: SongInfo;
+};
+
+const SongPlayer = (songInfo: SongPlayerProps) => {
+  const { chineseName, englishName, albumCover } = songInfo.songInfo;
   return (
     <div className="flex">
       <div className="m-3">
         <img
           width="120"
-          src="/images/album/CD-DearFriend.jpeg"
+          src={`/images/album/${albumCover}.jpeg`}
           className="rounded-full"
         />
       </div>
@@ -14,7 +25,9 @@ const SongPlayer = () => {
         <div className="text-white">
           <div className="mb-1">Dear Friend / 親密的朋友</div>
           <div className="text-xs">
-            <i>Album: Dear Friend / 親密的朋友</i>
+            <i>
+              Album: {englishName} / {chineseName}
+            </i>
           </div>
         </div>
         <div className="flex items-center">
@@ -43,36 +56,6 @@ const SongPlayer = () => {
         </div>
       </div>
     </div>
-
-    // <div className="absolute w-full flex">
-    //   <div className="container bg-slate-800 text-white p-3 grid grid-cols-2 items-center gap-3">
-    //     <div className="flex mr-3">
-    //       <div className="mr-5">
-    //         <img width="60" src="/images/album/CD-DearFriend.jpeg" />
-    //       </div>
-    //       <div>
-    //         <div className="mb-2">
-    //           <span className="text-gray-200">Song:</span>
-    //           <span className="text-lg">Dear Friend / 親密的朋友</span>
-    //         </div>
-    //         <div className="text-sm">
-    //           <span className="text-gray-400">
-    //             <i>Album: </i>
-    //           </span>
-    //           <span className="text-gray-300">Dear Friend 親密的朋友</span>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     <div>
-    //       <embed
-    //         src="/images/icon-play.svg"
-    //         width="30"
-    //         height="30"
-    //         type="image/svg+xml"
-    //       />
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import './cartPanel.css';
 
 export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
   const ref = useRef(null);
@@ -20,7 +21,7 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
     <div
       id="cartPanel"
       ref={ref}
-      className={`absolute z-10 top-0 ${
+      className={`absolute top-0 ${
         showCartPanel ? 'right-[0px]' : 'right-[-320px]'
       } w-[320px] h-full transition-all duration-300 bg-stone-100 p-3 shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]`}
     >

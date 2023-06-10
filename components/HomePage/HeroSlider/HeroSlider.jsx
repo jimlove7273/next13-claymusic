@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const HomeSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,10 +16,11 @@ const HomeSlider = () => {
   }, [currentSlide]);
 
   return (
-    <div>
+    <div className="relative w-full -z-10">
       <img
-        className="w-full object-cover"
+        className="w-full object-cover -z-10"
         src={'/images/' + slides[currentSlide]}
+        alt="Hero Image"
       />
     </div>
   );
