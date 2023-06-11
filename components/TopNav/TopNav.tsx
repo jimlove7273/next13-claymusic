@@ -24,14 +24,14 @@ export const TopNav = () => {
         showCartPanel={showCartPanel}
         setShowCartPanel={setShowCartPanel}
       />
-      <div className="container mx-auto">
+      <div className="w-full max-w-[1280px] mx-auto">
         <div className="flex justify-between h-full items-center px-3">
           <div>
             <img src="/images/home_logoEng.png" width={240} alt="Logo" />
           </div>
           <div className="flex items-center h-full mb-2">
             <div className="hidden md:flex items-center text-gray-700">
-              <Link href="/" className="px-2 hover:bg-[#a4cbed] cursor-pointer">
+              <Link href="/" className="p-2 hover:bg-[#a4cbed] cursor-pointer">
                 首頁
               </Link>
 
@@ -44,7 +44,7 @@ export const TopNav = () => {
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
-                  className={`px-2 hover:bg-[#a4cbed] ${
+                  className={`p-2 hover:bg-[#a4cbed] ${
                     ''
                     // whichDrop === 'aboutus' ||
                     // ['aboutclaymusic', 'supportus', 'privacy'].some((el) =>
@@ -100,7 +100,7 @@ export const TopNav = () => {
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
-                  className={`px-2 hover:bg-[#a4cbed] ${
+                  className={`p-2 hover:bg-[#a4cbed] ${
                     // whichDrop === 'products' ||
                     // ['album'].some((el) => pathName.includes(el))
                     //   ? 'bg-[#a4cbed]'
@@ -150,7 +150,7 @@ export const TopNav = () => {
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
-                  className={`px-2 hover:bg-[#a4cbed] ${
+                  className={`p-2 hover:bg-[#a4cbed] ${
                     // whichDrop === 'concert' ||
                     // ['concerts'].some((el) => pathName.includes(el))
                     //   ? 'bg-[#a4cbed]'
@@ -178,11 +178,11 @@ export const TopNav = () => {
                 </div>
               </div>
 
-              <a className="px-2 hover:bg-[#a4cbed]" href="/">
+              <a className="p-2 hover:bg-[#a4cbed]" href="/">
                 相片區
               </a>
               <Link
-                className={`px-2 hover:bg-[#a4cbed] ${
+                className={`p-2 hover:bg-[#a4cbed] ${
                   // ['supportus'].some((el) => pathName.includes(el))
                   //   ? 'bg-[#a4cbed]'
                   //   : ''
@@ -318,9 +318,12 @@ export const TopNav = () => {
             >
               支持我們
             </Link>
-            <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
+            <Link
+              className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer"
+              href="/privacy"
+            >
               隱私政策
-            </a>
+            </Link>
           </div>
           {/** ----------------------------------------------------------------
          * Products

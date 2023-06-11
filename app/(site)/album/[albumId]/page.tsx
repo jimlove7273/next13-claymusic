@@ -34,7 +34,7 @@ const AlbumSinglePage = ({ params }: any) => {
 
   return (
     <>
-      <div className="container max-w-full mx-auto my-8 md:my-24 p-3">
+      <div className="mx-auto my-8 md:my-24 p-3">
         <div className="text-2xl font-bold mb-5">
           專輯: 親密的朋友 / Dear Friend
         </div>

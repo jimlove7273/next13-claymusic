@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutClayMusic = () => {
   return (
-    <div className="container mx-auto my-8 md:my-24 p-3">
+    <div className="w-full mx-auto my-8 md:my-24 p-3">
       <div className="text-2xl font-bold mb-5">
         關於泥土音樂 / About Clay Music
       </div>

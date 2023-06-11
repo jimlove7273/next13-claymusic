@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Contactus = () => {
   return (
-    <div className="container p-5 md:px-0 mx-auto py-10">
+    <div className="p-5 md:px-0 py-10">
       <div className="text-2xl font-bold mb-5">聯絡我們 / Contact Us</div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="col-span-1 border-r border-gray-300">

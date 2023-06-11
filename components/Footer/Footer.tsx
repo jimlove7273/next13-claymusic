@@ -1,24 +1,31 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
     <div className="bg-[#2c353d] text-gray-300 p-8">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-between">
+      <div className="w-full max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-between">
         <div className="grow">
           <div className="text-[#d4e2fa] text-xl mb-3">我們的網頁</div>
           <hr className="border-dotted mb-3 text-sm" />
           <div>
-            支持我們
+            <Link className="cursor-pointer" href="/supportus">
+              支持我們
+            </Link>
             <br />
             產品區
             <br />
-            音樂會消息
+            <Link className="cursor-pointer" href="/concerts/check">
+              音樂會消息
+            </Link>
             <br />
             泥土相簿
             <br />
             影視區
             <br />
-            隱私政策
+            <Link className="cursor-pointer" href="/privacy">
+              隱私政策
+            </Link>
           </div>
         </div>
         <div></div>
