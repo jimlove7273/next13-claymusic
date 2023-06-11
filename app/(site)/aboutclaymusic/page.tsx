@@ -2,11 +2,11 @@ import React from 'react';
 
 const AboutClayMusic = () => {
   return (
-    <div className="container mx-auto my-8 p-3">
+    <div className="container mx-auto my-8 md:my-24 p-3">
       <div className="text-2xl font-bold mb-5">
         關於泥土音樂 / About Clay Music
       </div>
-      <div className="grid md:grid-cols-4 grid-cols-1 gap-4">
+      <div className="grid xs:grid-cols-1 md:grid-cols-4 gap-4">
         <div className="col-span-3">
           泥土音樂 (Clay Music)
           是為了傳揚耶穌基督的福音所成立的非營利機構，於2004年在美國加州登記成立。

@@ -1,4 +1,5 @@
 import '../globals.css';
+import 'tw-elements/dist/css/tw-elements.min.css';
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,7 +21,7 @@ export default function RootLayout({
         <div className="relative min-h-[100vh]">
           <div className="pb-[743px] md:pb-[580px] lg:pb-[370px]">
             <TopNav />
-            <main className="mt-1 md:mt-20">{children}</main>
+            <main className="md:mt-[65px]">{children}</main>
           </div>
           <footer className="absolute w-full bottom-0 -z-10">
             <Footer />

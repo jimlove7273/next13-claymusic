@@ -1,27 +1,29 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Offcanvas, initTE } from 'tw-elements';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { albumList } from '@/app/constants';
 import { CartPanel } from '../CartPanel/CartPanel';
 
 export const TopNav = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [whichDrop, setWhichDrop] = useState('');
   const [showCartPanel, setShowCartPanel] = useState(false);
   const pathName = usePathname();
+
+  useEffect(() => {
+    initTE({ Offcanvas });
+  }, []);
 
   return (
     <nav
       id="page-nav"
       className="md:fixed top-0 w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex"
     >
-      {showCartPanel && (
-        <CartPanel
-          showCartPanel={showCartPanel}
-          setShowCartPanel={setShowCartPanel}
-        />
-      )}
+      <CartPanel
+        showCartPanel={showCartPanel}
+        setShowCartPanel={setShowCartPanel}
+      />
       <div className="container mx-auto">
         <div className="flex justify-between h-full items-center px-3">
           <div>
@@ -37,18 +39,19 @@ export const TopNav = () => {
                * About Us
                ---------------------------------------------------------------- */}
               <div
-                className="relative px-2"
+                className="relative"
                 onMouseEnter={() => setWhichDrop('aboutus')}
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
                   className={`px-2 hover:bg-[#a4cbed] ${
-                    whichDrop === 'aboutus' ||
-                    ['aboutclaymusic', 'supportus', 'privacy'].some((el) =>
-                      pathName.includes(el),
-                    )
-                      ? 'bg-[#a4cbed]'
-                      : ''
+                    ''
+                    // whichDrop === 'aboutus' ||
+                    // ['aboutclaymusic', 'supportus', 'privacy'].some((el) =>
+                    //   pathName.includes(el),
+                    // )
+                    //   ? 'bg-[#a4cbed]'
+                    //   : ''
                   }`}
                   href="/"
                 >
@@ -93,16 +96,16 @@ export const TopNav = () => {
                * Products
                ---------------------------------------------------------------- */}
               <div
-                className="px-2"
                 onMouseEnter={() => setWhichDrop('products')}
                 onMouseLeave={() => setWhichDrop('')}
               >
                 <a
                   className={`px-2 hover:bg-[#a4cbed] ${
-                    whichDrop === 'products' ||
-                    ['album'].some((el) => pathName.includes(el))
-                      ? 'bg-[#a4cbed]'
-                      : ''
+                    // whichDrop === 'products' ||
+                    // ['album'].some((el) => pathName.includes(el))
+                    //   ? 'bg-[#a4cbed]'
+                    //   : ''
+                    ''
                   }`}
                   href="/"
                 >
@@ -148,10 +151,11 @@ export const TopNav = () => {
               >
                 <a
                   className={`px-2 hover:bg-[#a4cbed] ${
-                    whichDrop === 'concert' ||
-                    ['concerts'].some((el) => pathName.includes(el))
-                      ? 'bg-[#a4cbed]'
-                      : ''
+                    // whichDrop === 'concert' ||
+                    // ['concerts'].some((el) => pathName.includes(el))
+                    //   ? 'bg-[#a4cbed]'
+                    //   : ''
+                    ''
                   }`}
                   href="/"
                 >
@@ -179,9 +183,10 @@ export const TopNav = () => {
               </a>
               <Link
                 className={`px-2 hover:bg-[#a4cbed] ${
-                  ['supportus'].some((el) => pathName.includes(el))
-                    ? 'bg-[#a4cbed]'
-                    : ''
+                  // ['supportus'].some((el) => pathName.includes(el))
+                  //   ? 'bg-[#a4cbed]'
+                  //   : ''
+                  ''
                 }`}
                 href="/supportus"
               >
@@ -191,7 +196,7 @@ export const TopNav = () => {
 
             <div className="hidden md:block relative">
               <div
-                className="mt-1 cursor-pointer"
+                className="px-1 mt-1 cursor-pointer"
                 onClick={(e) => setShowCartPanel((prev) => !prev)}
               >
                 <img width={25} src="/images/icon-cart.png" alt="Cart" />
@@ -202,7 +207,15 @@ export const TopNav = () => {
             </div>
           </div>
           <div className="md:hidden flex items-center">
-            <button onClick={(e) => setMobileOpen(true)}>
+            <button
+              className="transition duration-150 ease-in-out"
+              type="button"
+              data-te-offcanvas-toggle
+              data-te-target="#offcanvas"
+              aria-controls="offcanvas"
+              data-te-ripple-init
+              data-te-ripple-color="light"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -226,36 +239,43 @@ export const TopNav = () => {
       Mobile Menu
       ---------------------------------------------------------------- */}
       <div
-        className={`absolute top-0 ${
-          mobileOpen ? 'left-0' : '-left-[100%]'
-        } p-5 w-full h-full bg-gray-900/40 transition-all duration-300 overscroll-none z-10`}
+        className="invisible fixed bottom-0 left-0 top-0 z-[1045] flex w-96 max-w-full -translate-x-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out dark:bg-neutral-800 dark:text-neutral-200 [&[data-te-offcanvas-show]]:transform-none"
+        tabIndex={-1}
+        id="offcanvas"
+        aria-labelledby="offcanvasLabel"
+        data-te-offcanvas-init
       >
-        <div className="z-1 absolute top-0 left-0 w-full max-w-[80%] h-full bg-white"></div>
-        <div className="flex flex-col w-full h-full max-w-[80%] text-gray-500 overflow-y-auto">
-          <div
-            className="relative flex justify-end mr-3"
-            onClick={(e) => setMobileOpen(false)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 mb-5"
+        <div className="flex flex-col w-full p-6 h-full text-gray-500 overflow-y-auto">
+          <div className="flex justify-between">
+            <img
+              className="relative w-[200px]"
+              alt="Logo"
+              src="/images/home_logoEng.jpg"
+            />
+            <button
+              type="button"
+              className="box-content rounded-none border-none opacity-50 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+              data-te-offcanvas-dismiss
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+              <span className="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </span>
+            </button>
           </div>
-          <img
-            className="relative w-[200px]"
-            alt="Logo"
-            src="/images/home_logoEng.jpg"
-          />
+
           <Link
             className="inline-block text-gray-800 font-bold relative py-1"
             href="/"
@@ -277,7 +297,7 @@ export const TopNav = () => {
           </div>
           <div
             className={`flex flex-col ${
-              whichDrop === 'm-aboutus' ? '' : 'hidden'
+              '' // whichDrop === 'm-aboutus' ? '' : 'hidden'
             }`}
           >
             <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
@@ -317,7 +337,7 @@ export const TopNav = () => {
           </div>
           <div
             className={`flex flex-col ${
-              whichDrop === 'm-products' ? '' : 'hidden'
+              '' // whichDrop === 'm-products' ? '' : 'hidden'
             }`}
           >
             {albumList.map((album) => (
@@ -350,7 +370,7 @@ export const TopNav = () => {
           </div>
           <div
             className={`flex flex-col ${
-              whichDrop === 'm-concert' ? '' : 'hidden'
+              '' // whichDrop === 'm-concert' ? '' : 'hidden'
             }`}
           >
             <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">

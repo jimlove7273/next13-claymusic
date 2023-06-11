@@ -21,9 +21,9 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
     <div
       id="cartPanel"
       ref={ref}
-      className={`absolute top-0 ${
-        showCartPanel ? 'right-[0px]' : 'right-[-320px]'
-      } w-[320px] h-full transition-all duration-300 bg-stone-100 p-3 shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]`}
+      className={`absolute top-0
+      ${showCartPanel ? 'right-0' : '-right-[320px]'}
+      h-full transition-all duration-300 bg-stone-100 p-3 shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]`}
     >
       <div className="flex justify-end">
         <button onClick={(e) => setShowCartPanel(false)}>
@@ -56,15 +56,28 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
               type="image/svg+xml"
             />
           </div>
-          <div className="mr-2">
+          <div className="mr-2 max-w-[50px]">
             <img src="/images/icon-mp3.png" />
           </div>
           <div>
-            <div className="text-xs">
-              MP3 - Let The World See Hope 讓世界看見希望
+            <div className="text-xs w-[200px] mb-1">
+              <span className="truncate block">
+                MP3 - Let The World See Hope 讓世界看見希望
+              </span>
             </div>
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-600">1 x $0.99</div>
+              <div className="flex items-center justify-center text-sm text-gray-600 mt-2">
+                <div className="flex border border-gray-200 items-center">
+                  <button className="px-2 py-0 border border-r-gray-200">
+                    -
+                  </button>
+                  <span className="px-1">1</span>
+                  <button className="px-2 py-0 border border-l-gray-200">
+                    +
+                  </button>
+                </div>
+                &nbsp;x $0.99
+              </div>
               <div className="text-md font-bold">$0.99</div>
             </div>
           </div>
@@ -81,15 +94,28 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
               type="image/svg+xml"
             />
           </div>
-          <div className="mr-2">
+          <div className="mr-2 max-w-[50px]">
             <img src="/images/icon-mp3.png" />
           </div>
           <div>
-            <div className="text-xs">
-              MP3 - Let The World See Hope 讓世界看見希望
+            <div className="text-xs w-[200px] mb-1">
+              <span className="truncate block">
+                MP3 - Let The World See Hope 讓世界看見希望
+              </span>
             </div>
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-600">1 x $0.99</div>
+              <div className="flex items-center justify-center text-sm text-gray-600 mt-2">
+                <div className="flex border border-gray-200 items-center">
+                  <button className="px-2 py-0 border border-r-gray-200">
+                    -
+                  </button>
+                  <span className="px-1">1</span>
+                  <button className="px-2 py-0 border border-l-gray-200">
+                    +
+                  </button>
+                </div>
+                &nbsp;x $0.99
+              </div>
               <div className="text-md font-bold">$0.99</div>
             </div>
           </div>
@@ -97,23 +123,14 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
 
         <hr className="border-double my-2" />
         <div className="text-sm text-neutral-600">
-          <div className="flex justify-end my-1">
+          <div className="flex justify-end items-center my-1">
             <span className="mr-2 font-bold">Sub Total:</span>
-            <span className="font-bold">$1.98</span>
+            <span className="font-bold text-xl">$1.98</span>
           </div>
-
-          {/* <div className="flex justify-end my-1">
-            <span className="mr-2">Shipping:&nbsp;</span>
-            <span>$0.00</span>
-          </div>
-          <div className="flex font-bold justify-end my-1">
-            <span className="mr-2">Order Total:&nbsp;</span>
-            <span>$1.98</span>
-          </div> */}
         </div>
       </div>
       <div>
-        <div className="mt-10 bg-orange-600 text-white text-center p-3 rounded-full cursor-pointer">
+        <div className="mt-10 bg-orange-600 text-white text-center p-2 rounded-full cursor-pointer">
           Check Out
         </div>
       </div>

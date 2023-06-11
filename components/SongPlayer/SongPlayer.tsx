@@ -19,6 +19,7 @@ const SongPlayer = (songInfo: SongPlayerProps) => {
           width="120"
           src={`/images/album/${albumCover}.jpeg`}
           className="rounded-full"
+          alt={englishName}
         />
       </div>
       <div className="flex flex-col justify-evenly">

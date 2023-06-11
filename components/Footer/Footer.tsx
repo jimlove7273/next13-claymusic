@@ -47,9 +47,18 @@ const Footer = () => {
             <img
               className="w-[40px] h-[40px]"
               src="/images/icon-facebook.svg"
+              alt="Facebook"
             />
-            <img className="w-[40px] h-[40px]" src="/images/icon-twitter.svg" />
-            <img className="w-[40px] h-[40px]" src="/images/icon-email.png" />
+            <img
+              className="w-[40px] h-[40px]"
+              src="/images/icon-twitter.svg"
+              alt="Twitter"
+            />
+            <img
+              className="w-[40px] h-[40px]"
+              src="/images/icon-email.png"
+              alt="Email"
+            />
           </div>
         </div>
       </div>

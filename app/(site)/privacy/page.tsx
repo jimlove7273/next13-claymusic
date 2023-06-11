@@ -2,7 +2,7 @@ import React from 'react';
 
 const Privacy = () => {
   return (
-    <div className="container mx-auto my-8 p-3">
+    <div className="container mx-auto my-24 p-3">
       <div className="text-2xl font-bold mb-5">Privacy Policy</div>
       Effective date: October 14, 2018
       <br />

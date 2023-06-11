@@ -2,7 +2,7 @@ import React from 'react';
 
 const Supportus = () => {
   return (
-    <div className="container mx-auto my-8 p-3">
+    <div className="container mx-auto my-24 p-3">
       <div className="text-2xl font-bold mb-5">支持我們 / Support Us</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
