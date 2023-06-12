@@ -13,12 +13,12 @@ const HomeSlider = () => {
         : setCurrentSlide(currentSlide + 1);
     }, 10000);
     return () => clearInterval(intervalImage);
-  }, [currentSlide]);
+  }, [currentSlide, slides.length]);
 
   return (
-    <div className="relative w-full -z-10">
+    <div className="w-full -z-10">
       <img
-        className="w-full object-cover -z-10"
+        className="w-full object-cover max-h-[600px]"
         src={'/images/' + slides[currentSlide]}
         alt="Hero Image"
       />
