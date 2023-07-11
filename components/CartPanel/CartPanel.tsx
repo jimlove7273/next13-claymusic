@@ -1,31 +1,15 @@
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
+import { useCartStore } from '../../store/cartStore';
 import './cartPanel.css';
 
 export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
   const ref = useRef(null);
+  const { cart, cartTotalAmount, cartAmount } = useCartStore();
 
-  const [cartItems, setCartItems] = useState([
-    {
-      sku: 'mp0301',
-      name: 'MP3 - Let The World See Hope 讓世界看見希望',
-      qty: 1,
-      price: 0.99,
-    },
-    {
-      sku: 'mp0104',
-      name: 'MP3 - Freedom 自由',
-      qty: 1,
-      price: 0.99,
-    },
-    {
-      sk: 'mp0105',
-      name: 'MP3 - Open the Darkest Corner 打開黑暗的角落',
-      qty: 1,
-      price: 0.99,
-    },
-  ]);
-
-  let cartSum = 0;
+  useEffect(() => {
+    cartAmount();
+  }, []);
 
   useEffect(() => {
     const handleOutSideClick = (e: any) => {
@@ -70,9 +54,7 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
         購物車 / Shopping Cart
       </div>
       <div className="mt-5">
-        {cartItems.map((item, i) => {
-          cartSum += item.qty * item.price;
-
+        {cart.map((item, i) => {
           return (
             <>
               <div className="flex text-gray-600" key={i}>
@@ -89,22 +71,20 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
                 </div>
                 <div>
                   <div className="text-xs w-[200px] mb-1">
-                    <span className="truncate block">{item.name}</span>
+                    <span className="truncate block">{item.product}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center justify-center text-sm text-gray-600 mt-2">
-                      <div className="flex border border-gray-200 items-center">
-                        <button className="px-2 py-0 border border-r-gray-200">
-                          -
-                        </button>
-                        <span className="px-1">{item.qty}</span>
-                        <button className="px-2 py-0 border border-l-gray-200">
-                          +
-                        </button>
+                      <div className="flex items-center bg-white rounded-md">
+                        <button className="px-2 py-0">-</button>
+                        <span className="px-1">{item.quantity}</span>
+                        <button className="px-2 py-0">+</button>
                       </div>
                       &nbsp;x ${item.price}
                     </div>
-                    <div className="text-md font-bold">$0.99</div>
+                    <div className="text-md font-bold">
+                      ${item.quantity * item.price}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -116,12 +96,7 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
         <div className="text-sm text-neutral-600">
           <div className="flex justify-end items-center my-1">
             <span className="mr-2 font-bold">Sub Total:</span>
-            <span className="font-bold text-xl">
-              {cartSum.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-              })}
-            </span>
+            <span className="font-bold text-xl">{cartTotalAmount}</span>
           </div>
         </div>
       </div>

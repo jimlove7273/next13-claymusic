@@ -4,6 +4,7 @@ type cartProduct = {
   id: number;
   itemNumber: string;
   product: string;
+  productType: 'CD' | 'SB' | 'MP3';
   quantity: number;
   price: number;
 };
@@ -12,13 +13,32 @@ type cartItemsProps = {
   cart: cartProduct[];
   cartQty: number;
   cartItemCount: () => void;
+  cartTotalAmount: number;
+  cartAmount: () => void;
   addToCart: (product: cartProduct) => void;
   removeFromCart: (productId: number) => void;
   updateQuantity: (productId: number, action: 'increase' | 'decrease') => void;
 };
 
 export const useCartStore = create<cartItemsProps>((set, get) => ({
-  cart: [],
+  cart: [
+    {
+      id: 23,
+      itemNumber: 'cd1',
+      product: 'Dear Friend CD',
+      productType: 'CD',
+      quantity: 1,
+      price: 10.99,
+    },
+    {
+      id: 24,
+      itemNumber: 'cd2',
+      product: 'Footsteps CD',
+      productType: 'CD',
+      quantity: 2,
+      price: 10.99,
+    },
+  ],
   addToCart: (product: cartProduct) => {
     const cart = get().cart;
     const findProduct = cart.find((p) => p.id === product.id);
@@ -50,6 +70,16 @@ export const useCartStore = create<cartItemsProps>((set, get) => ({
   cartQty: 0,
   cartItemCount: () => {
     const cart = get().cart;
-    set({ cartQty: cart.length });
+    let cartNumCount = cart.reduce((acc, item) => item.quantity + acc, 0);
+    set({ cartQty: cartNumCount });
+  },
+  cartTotalAmount: 0,
+  cartAmount: () => {
+    const cart = get().cart;
+    let cartTotal = cart.reduce(
+      (acc, item) => item.quantity * item.price + acc,
+      0,
+    );
+    set({ cartTotalAmount: cartTotal });
   },
 }));
