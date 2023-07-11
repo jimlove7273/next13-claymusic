@@ -1,6 +1,8 @@
 import { getPosts, getConcerts } from '@/sanity/sanity-utils';
 
-import HeroSlider from '../../components/HomePage/HeroSlider/HeroSlider.jsx';
+import HeroSlider from '@/components/HomePage/HeroSlider';
+import YoutubeList from '@/components/HomePage/YoutubeList';
+import AlbumList from '@/components/HomePage/AlbumList';
 
 export default async function Home() {
   const posts = await getPosts();
@@ -9,6 +11,8 @@ export default async function Home() {
   return (
     <>
       <HeroSlider />
+      <AlbumList />
+      <YoutubeList />
       <div className="w-full max-w-[1280px] mx-auto">
         POSTS:
         <br />

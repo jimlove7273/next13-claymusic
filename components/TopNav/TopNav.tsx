@@ -5,14 +5,18 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { albumList } from '@/app/constants';
 import { CartPanel } from '../CartPanel/CartPanel';
+import { useCartStore } from '../../store/cartStore';
 
 export const TopNav = () => {
   const [whichDrop, setWhichDrop] = useState('');
   const [showCartPanel, setShowCartPanel] = useState(false);
   const pathName = usePathname();
 
+  const { cartItemCount, cartQty } = useCartStore();
+
   useEffect(() => {
     initTE({ Offcanvas });
+    cartItemCount();
   }, []);
 
   return (
@@ -201,7 +205,7 @@ export const TopNav = () => {
               >
                 <img width={25} src="/images/icon-cart.png" alt="Cart" />
                 <div className="absolute w-[15px] h-[15px] top-[-1px] right-[-5px] text-[9px] text-center bg-[#fb7701] text-white rounded-full">
-                  12
+                  {cartQty}
                 </div>
               </div>
             </div>
@@ -297,7 +301,7 @@ export const TopNav = () => {
           </div>
           <div
             className={`flex flex-col ${
-              '' // whichDrop === 'm-aboutus' ? '' : 'hidden'
+              whichDrop === 'm-aboutus' ? '' : 'hidden'
             }`}
           >
             <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
@@ -340,7 +344,7 @@ export const TopNav = () => {
           </div>
           <div
             className={`flex flex-col ${
-              '' // whichDrop === 'm-products' ? '' : 'hidden'
+              whichDrop === 'm-products' ? '' : 'hidden'
             }`}
           >
             {albumList.map((album) => (
@@ -373,7 +377,7 @@ export const TopNav = () => {
           </div>
           <div
             className={`flex flex-col ${
-              '' // whichDrop === 'm-concert' ? '' : 'hidden'
+              whichDrop === 'm-concert' ? '' : 'hidden'
             }`}
           >
             <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
@@ -395,20 +399,17 @@ export const TopNav = () => {
           <div className="relative mt-12">
             <hr />
             <div className="mt-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                />
-              </svg>
+              <div className="inline-block relative">
+                <div
+                  className="px-1 mt-1 cursor-pointer"
+                  onClick={(e) => setShowCartPanel((prev) => !prev)}
+                >
+                  <img width={25} src="/images/icon-cart.png" alt="Cart" />
+                  <div className="absolute w-[15px] h-[15px] top-[-1px] right-[-5px] text-[9px] text-center bg-[#fb7701] text-white rounded-full">
+                    {cartQty}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
