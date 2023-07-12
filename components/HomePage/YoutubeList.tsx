@@ -41,7 +41,7 @@ const YoutubeList = () => {
         {youtubes
           .sort((a, b) => a.id - b.id)
           .map((yt, i) => (
-            <div key={i} className="relative">
+            <div key={i} className="relative -z-10">
               <div className="flex justify-between items-center pr-4">
                 <div className="text-2xl font-bold my-2">{yt.title}</div>
                 <Link

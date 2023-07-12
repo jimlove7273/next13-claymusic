@@ -12,11 +12,11 @@ export const TopNav = () => {
   const [showCartPanel, setShowCartPanel] = useState(false);
   const pathName = usePathname();
 
-  const { cartItemCount, cartQty } = useCartStore();
+  const { cartCalculator, cartQty } = useCartStore();
 
   useEffect(() => {
     initTE({ Offcanvas });
-    cartItemCount();
+    cartCalculator();
   }, []);
 
   return (
@@ -204,7 +204,7 @@ export const TopNav = () => {
                 onClick={(e) => setShowCartPanel((prev) => !prev)}
               >
                 <img width={25} src="/images/icon-cart.png" alt="Cart" />
-                <div className="absolute w-[15px] h-[15px] top-[-1px] right-[-5px] text-[9px] text-center bg-[#fb7701] text-white rounded-full">
+                <div className="absolute w-[15px] h-[15px] top-1 right-[-5px] text-[9px] flex pt-[1px] justify-center bg-[#fb7701] text-white rounded-full">
                   {cartQty}
                 </div>
               </div>

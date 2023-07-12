@@ -1,7 +1,9 @@
+'use client';
 import React from 'react';
 // import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { albumList, albumdearfriend, albumoneday } from '../../../constants';
+import { useCartStore } from '../../../../store/cartStore';
 
 import SongPlayer from '@/components/SongPlayer/SongPlayer';
 
@@ -14,6 +16,8 @@ const albums = {
 let chineseName: string, englishName: string, albumCover: string;
 
 const AlbumSinglePage = ({ params }: any) => {
+  const { addToCart, cartCalculator } = useCartStore();
+
   let currentAlbum = albumdearfriend;
   currentAlbum =
     albums[params.albumId as AlbumId] === undefined
@@ -32,6 +36,18 @@ const AlbumSinglePage = ({ params }: any) => {
     albumCover = foundAlbum[0].albumCover;
   }
 
+  const addingCart = () => {
+    addToCart({
+      id: 25,
+      itemNumber: 'cd1',
+      product: 'Dear Friend CD',
+      productType: 'CD',
+      quantity: 1,
+      price: 10.99,
+    });
+    cartCalculator();
+  };
+
   return (
     <>
       <div className="mx-auto my-8 md:my-24 p-3">
@@ -40,7 +56,20 @@ const AlbumSinglePage = ({ params }: any) => {
         </div>
         <div className="w-full md:w-[80%] mx-auto bg-black">
           <div className="border-8 border-x-gray-400">
-            <SongPlayer songInfo={{ chineseName, englishName, albumCover }} />
+            <div className="flex justify-between px-6 py-2">
+              <SongPlayer songInfo={{ chineseName, englishName, albumCover }} />
+              <div className="text-white flex items-center">
+                <button
+                  className="bg-blue-500 px-4 mx-3 py-2 rounded-md"
+                  onClick={addingCart}
+                >
+                  Buy CD
+                </button>
+                <button className="bg-blue-500 px-4 mx-3 py-2 rounded-md">
+                  Buy Songbook
+                </button>
+              </div>
+            </div>
             <div className="p-5 bg-slate-900">
               <table className="w-full p-5 text-white">
                 <thead>
@@ -50,10 +79,10 @@ const AlbumSinglePage = ({ params }: any) => {
                         &nbsp;&nbsp;試聽
                       </div>
                     </td>
-                    <td className="hidden md:table-cell">
+                    <td className="hidden sm:table-cell">
                       <div className="items-center text-lg font-bold">簡譜</div>
                     </td>
-                    <td className="hidden md:table-cell">
+                    <td className="hidden sm:table-cell">
                       <div className="items-center text-lg font-bold">PPT</div>
                     </td>
                     <td>
@@ -73,10 +102,10 @@ const AlbumSinglePage = ({ params }: any) => {
                         <td className="py-2 pl-2">
                           {index + 1}. {current}
                         </td>
-                        <td className="hidden md:table-cell py-2 cursor-pointer">
+                        <td className="hidden sm:table-cell py-2 cursor-pointer">
                           下載
                         </td>
-                        <td className="hidden md:table-cell py-2 cursor-pointer">
+                        <td className="hidden sm:table-cell py-2 cursor-pointer">
                           下載
                         </td>
                         <td className="text-center">MP3</td>
