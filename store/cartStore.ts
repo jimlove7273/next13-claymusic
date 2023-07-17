@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware';
 type cartProduct = {
   id: number;
   itemNumber: string;
-  product: string;
+  product: string | undefined;
   productType: 'CD' | 'SB' | 'MP3';
   quantity: number;
   price: number;

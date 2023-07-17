@@ -6,7 +6,7 @@ export const albumList = [
     albumCover: 'CD-PeaceRemains',
     songbookCover: '',
     homepageOrder: 0,
-    featured: true
+    featured: true,
   },
   {
     chineseName: '暢銷精選 USB禮卡',
@@ -15,7 +15,7 @@ export const albumList = [
     albumCover: 'CD-ConcertSongs',
     songbookCover: '',
     homepageOrder: 1,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '日語專輯：愛を形に',
@@ -24,7 +24,7 @@ export const albumList = [
     albumCover: 'CD-Japanese1',
     songbookCover: '',
     homepageOrder: 0,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '不變的愛',
@@ -33,7 +33,7 @@ export const albumList = [
     albumCover: 'CD-UnchangingLove',
     songbookCover: '',
     homepageOrder: 2,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '好心情',
@@ -42,7 +42,7 @@ export const albumList = [
     albumCover: 'CD-FeelingHappy',
     songbookCover: '',
     homepageOrder: 3,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '幸福',
@@ -51,7 +51,7 @@ export const albumList = [
     albumCover: 'CD-Blessed',
     songbookCover: '',
     homepageOrder: 4,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '信心',
@@ -60,7 +60,7 @@ export const albumList = [
     albumCover: 'CD-Faith',
     songbookCover: '',
     homepageOrder: 5,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '就在這裡',
@@ -69,7 +69,7 @@ export const albumList = [
     albumCover: 'CD-RightHere',
     songbookCover: '',
     homepageOrder: 6,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '腳步',
@@ -78,7 +78,7 @@ export const albumList = [
     albumCover: 'CD-Footsteps',
     songbookCover: '',
     homepageOrder: 7,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '有一天',
@@ -88,7 +88,7 @@ export const albumList = [
     albumCover: 'CD-OneDay',
     songbookCover: '',
     homepageOrder: 8,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '親密的朋友',
@@ -98,7 +98,7 @@ export const albumList = [
     albumCover: 'CD-DearFriend',
     songbookCover: '/images/album/CD-DearFriend',
     homepageOrder: 0,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '泥娃娃 2',
@@ -107,7 +107,7 @@ export const albumList = [
     albumCover: 'CD-SayYesToJesus',
     songbookCover: '',
     homepageOrder: 0,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '泥娃娃 #1',
@@ -116,7 +116,7 @@ export const albumList = [
     albumCover: 'CD-ClayKids1',
     songbookCover: '',
     homepageOrder: 0,
-    featured: false
+    featured: false,
   },
   {
     chineseName: '鋼琴輕音樂',
@@ -125,48 +125,141 @@ export const albumList = [
     albumCover: 'CD-PianoMusic',
     songbookCover: '',
     homepageOrder: 0,
-    featured: false
+    featured: false,
   },
 ];
 
 export const heroContent = {
-    title: "平安 永不離開 peace remains",
-    content: "盛曉玫又一全新創作專輯. 由幾位歌手展現出不同以往的新風格唱出對神的讚美與感恩. 唱出對人的彼此真誠相愛. 唱出人心最渴望的平安與盼望."
-}
-
-export const albumdearfriend = {
-  index: 1,
-  songs: [
-    '為何對我這麼好',
-    '你名何其美',
-    '親密的朋友',
-    '自由',
-    '打開黑暗的角落',
-    '榮耀歸神 平安給人',
-    '水火',
-    '我一生',
-    '給你真平安',
-    '放手交給祂',
-    '新天地',
-  ],
+  title: '平安 永不離開 peace remains',
+  content:
+    '盛曉玫又一全新創作專輯. 由幾位歌手展現出不同以往的新風格唱出對神的讚美與感恩. 唱出對人的彼此真誠相愛. 唱出人心最渴望的平安與盼望.',
 };
 
-export const albumoneday = {
-  index: 2,
-  songs: [
-    '我多麼需要有你',
-    '在祂沒有難成的事',
-    '有一天',
-    '奇妙神蹟',
-    '陪我',
-    '看見神的愛',
-    '只要耶穌',
-    '渴慕',
-    '牽我手',
-    '祂是道路',
-    '擁抱新的每一天',
-    '泥土的禱告',
-  ],
+export const albums = {
+  albumdearfriend: {
+    index: 1,
+    songs: [
+      {
+        title: '為何對我這麼好',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '你名何其美',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '親密的朋友',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '自由',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '打開黑暗的角落',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '榮耀歸神 平安給人',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '水火',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '我一生',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '給你真平安',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '放手交給祂',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '新天地',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+    ],
+  },
+  albumoneday: {
+    index: 2,
+    songs: [
+      {
+        title: '我多麼需要有你',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '在祂沒有難成的事',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '有一天',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-03.mp3',
+      },
+      {
+        title: '奇妙神蹟',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '陪我',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '看見神的愛',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '只要耶穌',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '渴慕',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '牽我手',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '祂是道路',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '擁抱新的每一天',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+      {
+        title: '泥土的禱告',
+        mp3url:
+          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+      },
+    ],
+  },
 };
 
 export const HomeYoutubeList = [

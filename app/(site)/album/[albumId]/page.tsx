@@ -1,46 +1,39 @@
 'use client';
-import React from 'react';
-// import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { albumList, albumdearfriend, albumoneday } from '../../../constants';
-import { useCartStore } from '../../../../store/cartStore';
+import { useState } from 'react';
+import { albumList, albums } from '../../../constants';
+import { useCartStore } from '@/store/cartStore';
+import { useCurrentSong } from '@/store/songPlayStore';
+import { IoMdPlay } from 'react-icons/io';
+import Image from 'next/image';
 
 import SongPlayer from '@/components/SongPlayer/SongPlayer';
 
-type AlbumId = 'dearfriend' | 'oneday';
-const albums = {
-  dearfriend: albumdearfriend,
-  oneday: albumoneday,
-};
-
-let chineseName: string, englishName: string, albumCover: string;
-
 const AlbumSinglePage = ({ params }: any) => {
-  const { addToCart, cartCalculator } = useCartStore();
-
-  let currentAlbum = albumdearfriend;
-  currentAlbum =
-    albums[params.albumId as AlbumId] === undefined
-      ? { index: 0, songs: [] }
-      : albums[params.albumId as AlbumId];
-
-  let songIndex = currentAlbum.index;
-  let songs = currentAlbum.songs;
-
+  // Get Album info
+  let chineseName: string | undefined;
+  let englishName: string | undefined;
+  let albumCover: string | undefined;
+  const [volume, setVolume] = useState(50);
   let foundAlbum = albumList.filter(
     (checkAlbum) => checkAlbum.link === '/album/' + params.albumId,
   );
-  if (foundAlbum) {
+  if (foundAlbum.length > 0) {
     chineseName = foundAlbum[0].chineseName;
     englishName = foundAlbum[0].englishName;
     albumCover = foundAlbum[0].albumCover;
   }
+  // Get List of Songs
+  let albumKey = 'album' + params.albumId;
+  let albumSongs = albums[albumKey as keyof typeof albums].songs;
+  // Get store action
+  const { addToCart, cartCalculator } = useCartStore();
+  const { currentSong, setCurrentSong } = useCurrentSong();
 
-  const addingCart = () => {
+  const addToCartFunc = () => {
     addToCart({
-      id: 25,
-      itemNumber: 'cd1',
-      product: 'Dear Friend CD',
+      id: 1,
+      itemNumber: 'CD1',
+      product: englishName,
       productType: 'CD',
       quantity: 1,
       price: 10.99,
@@ -50,76 +43,60 @@ const AlbumSinglePage = ({ params }: any) => {
 
   return (
     <>
-      <div className="mx-auto my-8 md:my-24 p-3">
-        <div className="text-2xl font-bold mb-5">
-          專輯: 親密的朋友 / Dear Friend
-        </div>
-        <div className="w-full md:w-[80%] mx-auto bg-black">
-          <div className="border-8 border-x-gray-400">
-            <div className="flex justify-between px-6 py-2">
-              <SongPlayer songInfo={{ chineseName, englishName, albumCover }} />
-              <div className="text-white flex items-center">
-                <button
-                  className="bg-blue-500 px-4 mx-3 py-2 rounded-md"
-                  onClick={addingCart}
-                >
-                  Buy CD
-                </button>
-                <button className="bg-blue-500 px-4 mx-3 py-2 rounded-md">
-                  Buy Songbook
-                </button>
+      <div className="flex flex-wrap gap-5 py-10">
+        <div className="md:w-1/5 xs:w-full">
+          <Image
+            src={`/images/album/${albumCover}.jpeg`}
+            className="relative w-full object-contain -z-10"
+            alt="Album"
+            width={500}
+            height={500}
+          />
+          <div className="mt-10">
+            我要買
+            <div className="flex space-x-2 mt-2">
+              <div className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-1 rounded-md cursor-pointer">
+                <div onClick={addToCartFunc}>+ CD</div>
+              </div>
+              <div className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-1 rounded-md cursor-pointer">
+                + 歌本
               </div>
             </div>
-            <div className="p-5 bg-slate-900">
-              <table className="w-full p-5 text-white">
-                <thead>
-                  <tr className="bg-slate-700">
-                    <td>
-                      <div className="flex items-center text-lg font-bold my-2">
-                        &nbsp;&nbsp;試聽
-                      </div>
-                    </td>
-                    <td className="hidden sm:table-cell">
-                      <div className="items-center text-lg font-bold">簡譜</div>
-                    </td>
-                    <td className="hidden sm:table-cell">
-                      <div className="items-center text-lg font-bold">PPT</div>
-                    </td>
-                    <td>
-                      <div className="flex items-center text-lg font-bold justify-center">
-                        購買MP3
-                      </div>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {songs.map((current, index) => (
-                    <>
-                      <tr
-                        key={index}
-                        className="text-gray-100 hover:bg-slate-600 cursor-pointer items-center"
-                      >
-                        <td className="py-2 pl-2">
-                          {index + 1}. {current}
-                        </td>
-                        <td className="hidden sm:table-cell py-2 cursor-pointer">
-                          下載
-                        </td>
-                        <td className="hidden sm:table-cell py-2 cursor-pointer">
-                          下載
-                        </td>
-                        <td className="text-center">MP3</td>
-                      </tr>
-                      <tr>
-                        <td colSpan={4}>
-                          <hr className="border-dotted border-gray-600" />
-                        </td>
-                      </tr>
-                    </>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          </div>
+        </div>
+        <div className="md:w-3/5 xs:w-full">
+          <div className="text-4xl">
+            {chineseName} {englishName}
+          </div>
+          <div className="mt-10">
+            {albumSongs.map((song) => (
+              <div
+                key={song.title}
+                className="border-b border-gray-200 py-2 flex justify-between items-center"
+              >
+                <div
+                  className="ml-2 cursor-pointer"
+                  onClick={() => setCurrentSong(song.title, song.mp3url)}
+                >
+                  <IoMdPlay />
+                </div>
+                <div className="w-[60%]">
+                  <div className="font-bold text-lg">{song.title}</div>
+                  <div className="text-xs text-gray-300">{chineseName}</div>
+                </div>
+                <div className="text-sm p-1 rounded-md cursor-pointer hover:bg-blue-600 hover:text-gray-100">
+                  購買MP3
+                </div>
+                <div className="hidden md:block text-sm">下載簡譜</div>
+                <div className="hidden md:block text-sm mr-2">下載PPT</div>
+                {currentSong.title !== '' && (
+                  <SongPlayer
+                    albumName={chineseName}
+                    mp3url={currentSong.mp3url}
+                  />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
