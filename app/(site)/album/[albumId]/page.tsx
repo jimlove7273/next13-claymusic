@@ -10,9 +10,9 @@ import SongPlayer from '@/components/SongPlayer/SongPlayer';
 
 const AlbumSinglePage = ({ params }: any) => {
   // Get Album info
-  let chineseName: string | undefined;
-  let englishName: string | undefined;
-  let albumCover: string | undefined;
+  let chineseName: string;
+  let englishName: string;
+  let albumCover: string;
   const [volume, setVolume] = useState(50);
   let foundAlbum = albumList.filter(
     (checkAlbum) => checkAlbum.link === '/album/' + params.albumId,
@@ -45,13 +45,15 @@ const AlbumSinglePage = ({ params }: any) => {
     <>
       <div className="flex flex-wrap gap-5 py-10">
         <div className="md:w-1/5 xs:w-full">
-          <Image
-            src={`/images/album/${albumCover}.jpeg`}
-            className="relative w-full object-contain -z-10"
-            alt="Album"
-            width={500}
-            height={500}
-          />
+          <div className="shadow-2xl">
+            <Image
+              src={`/images/album/${albumCover}.jpeg`}
+              className="relative w-full object-contain -z-10"
+              alt="Album"
+              width={500}
+              height={500}
+            />
+          </div>
           <div className="mt-10">
             我要買
             <div className="flex space-x-2 mt-2">
