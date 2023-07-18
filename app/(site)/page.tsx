@@ -10,6 +10,7 @@ export default async function Home() {
 
   return (
     <>
+      <input type="range" id="volume-control" min="0" max="100" />
       <HeroSlider />
       <AlbumList />
       <YoutubeList />

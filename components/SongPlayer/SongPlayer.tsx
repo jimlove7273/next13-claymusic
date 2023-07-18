@@ -26,7 +26,6 @@ const SongPlayer = React.memo(
     } = useCurrentSong();
 
     const [duration, setDuration] = useState();
-    // const [volume, changeVolume] = useState(20);
 
     /**
      * function: handleTimeUpdcate
@@ -51,6 +50,7 @@ const SongPlayer = React.memo(
      *
      */
     const handleVolumeChange = (e: any) => {
+      console.log('handleVolumeChange');
       const newVolume = Number(e.target.value);
       changeVolume(newVolume);
       if (audioRef.current) {
@@ -82,6 +82,7 @@ const SongPlayer = React.memo(
      *
      */
     const handleDecreaseVolume = () => {
+      console.log('decrease volume');
       decreaseVolume();
       if (audioRef.current) {
         audioRef.current.volume = volume / 100;
@@ -94,6 +95,7 @@ const SongPlayer = React.memo(
      * This is used when increase volume button is clicked
      */
     const handleIncreaseVolume = () => {
+      console.log('increase volume');
       increaseVolume();
       if (audioRef.current) {
         audioRef.current.volume = volume / 100;
@@ -173,7 +175,7 @@ const SongPlayer = React.memo(
                 <div className="flex h-[60px] items-center pr-2 mr-2 space-x-1 pl-2 border-r border-gray-200">
                   <IoMdVolumeHigh size={20} />
                   <div className="flex space-x-2 items-center">
-                    <div
+                    {/* <div
                       className="cursor-pointer"
                       onClick={handleDecreaseVolume}
                     >
@@ -184,16 +186,17 @@ const SongPlayer = React.memo(
                       onClick={handleIncreaseVolume}
                     >
                       <IoIosAdd size={25} />
-                    </div>
+                    </div> */}
                     <input
                       type="range"
                       id="volume-control"
                       min="0"
                       max="100"
+                      step={5}
                       value={volume}
                       onChange={handleVolumeChange}
                     />
-                    <div className="text-[12px]">{volume}</div>
+                    <div className="w-6 text-[12px]">{volume}</div>
                   </div>
                 </div>
                 <div className="mr-4 flex items-center space-x-3">
