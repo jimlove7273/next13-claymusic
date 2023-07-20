@@ -57,8 +57,8 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
         <div className="mt-5">
           {cart.map((item, i) => {
             return (
-              <>
-                <div className="flex text-gray-600" key={i}>
+              <div key={i}>
+                <div className="flex text-gray-600">
                   <div
                     className="flex items-center"
                     onClick={() => removingFromCart(item.itemNumber)}
@@ -115,7 +115,7 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
                   </div>
                 </div>
                 <hr className="my-2" />
-              </>
+              </div>
             );
           })}
 

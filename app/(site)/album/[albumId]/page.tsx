@@ -17,7 +17,6 @@ const AlbumSinglePage = ({ params }: any) => {
   let foundAlbum = albumList.filter(
     (checkAlbum) => checkAlbum.link === '/album/' + params.albumId,
   );
-  console.log('** foundAlbum', foundAlbum);
   if (foundAlbum.length > 0) {
     chineseName = foundAlbum[0].chineseName;
     englishName = foundAlbum[0].englishName;
@@ -37,10 +36,7 @@ const AlbumSinglePage = ({ params }: any) => {
   const { cart, addToCart, cartCalculator } = useCartStore();
   const { currentSong, setCurrentSong } = useCurrentSong();
 
-  console.log('** cart', cart);
-
   const addToCartFunc = (albumType: 'CD' | 'SB') => {
-    // console.log('** albumType', albumType);
     let addToCartInfo = {
       id: albumSeq,
       itemNumber: albumType + albumSeq,
@@ -49,7 +45,6 @@ const AlbumSinglePage = ({ params }: any) => {
       quantity: 1,
       price: albumType === 'CD' ? 10.99 : 5.99,
     };
-    console.log('** addToCartInfo', addToCartInfo);
     addToCart(addToCartInfo);
     cartCalculator();
   };
