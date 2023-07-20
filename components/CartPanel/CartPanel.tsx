@@ -1,12 +1,18 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { useCartStore } from '../../store/cartStore';
+import { IoClose } from 'react-icons/io5';
 import './cartPanel.css';
 
 export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
   const ref = useRef(null);
-  const { cart, cartTotalAmount, cartCalculator, updateQuantity } =
-    useCartStore();
+  const {
+    cart,
+    cartTotalAmount,
+    cartCalculator,
+    updateQuantity,
+    removeFromCart,
+  } = useCartStore();
 
   /**
    * Run the shopping cart calculator upon entering the page
@@ -14,6 +20,13 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
   useEffect(() => {
     cartCalculator();
   }, []);
+
+  const removingFromCart = (itemNumber: string) => {
+    if (confirm('Are you sure you want to deleting this record?')) {
+      removeFromCart(itemNumber);
+      cartCalculator();
+    }
+  };
 
   return (
     <>
@@ -58,13 +71,11 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
             return (
               <>
                 <div className="flex text-gray-600" key={i}>
-                  <div className="flex items-center">
-                    <embed
-                      src="/images/item-delete.svg"
-                      width="30"
-                      height="30"
-                      type="image/svg+xml"
-                    />
+                  <div
+                    className="flex items-center"
+                    onClick={() => removingFromCart(item.itemNumber)}
+                  >
+                    <IoClose size={24} className="text-red-900 font-bold" />
                   </div>
                   <div className="mr-2 max-w-[50px]">
                     {item.productType === 'CD' && (

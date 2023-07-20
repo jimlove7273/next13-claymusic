@@ -16,7 +16,7 @@ type cartItemsProps = {
   cartCalculator: () => void;
   cartTotalAmount: number;
   addToCart: (product: cartProduct) => void;
-  removeFromCart: (productId: number) => void;
+  removeFromCart: (itemNumber: string) => void;
   updateQuantity: (productId: number, action: 'increase' | 'decrease') => void;
 };
 
@@ -36,8 +36,12 @@ export const useCartStore = create<cartItemsProps>()(
         }
         set({ cart });
       },
-      removeFromCart: (productId: number) => {
-        set({ cart: get().cart.filter((product) => product.id !== productId) });
+      removeFromCart: (itemNumber: string) => {
+        set({
+          cart: get().cart.filter(
+            (product) => product.itemNumber !== itemNumber,
+          ),
+        });
       },
       updateQuantity: (productId: number, action: 'increase' | 'decrease') => {
         const cart = get().cart;
