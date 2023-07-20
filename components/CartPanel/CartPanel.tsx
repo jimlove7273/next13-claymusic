@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useCartStore } from '../../store/cartStore';
 import { IoClose } from 'react-icons/io5';
+import { BsTrash } from 'react-icons/bs';
 import './cartPanel.css';
 
 export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
@@ -32,7 +33,7 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
     <>
       <div
         className={`${
-          showCartPanel ? 'absolute' : 'hidden'
+          showCartPanel ? 'absolute z-10' : 'hidden'
         } top-0 left-0 w-full h-screen bg-gray-900/60`}
         onClick={() => setShowCartPanel(false)}
       >
@@ -41,26 +42,13 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
       <div
         id="cartPanel"
         ref={ref}
-        className={`z-10 top-0
-      ${showCartPanel ? 'absolute right-0' : 'hidden -right-[320px]'}
-      h-full transition-all duration-300 bg-stone-100 p-3 shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]`}
+        className={`z-10 absolute top-0 right-0 h-full transition-all duration-300 bg-stone-100 p-3
+      ${showCartPanel ? '' : 'translate-x-full'}
+      shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]`}
       >
         <div className="flex justify-end">
           <button onClick={(e) => setShowCartPanel(false)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 mb-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <IoClose size={30} />
           </button>
         </div>
         <div className="text-xl font-bold text-center text-blue-900 mt-4">
@@ -75,7 +63,10 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
                     className="flex items-center"
                     onClick={() => removingFromCart(item.itemNumber)}
                   >
-                    <IoClose size={24} className="text-red-900 font-bold" />
+                    <BsTrash
+                      size={18}
+                      className="text-red-900 font-bold mr-2"
+                    />
                   </div>
                   <div className="mr-2 max-w-[50px]">
                     {item.productType === 'CD' && (
@@ -139,7 +130,7 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
             </div>
           ) : (
             <div className="text-[12px] py-5 text-center bg-white shadow">
-              There's nothing in
+              There is nothing in
               <br />
               the Shopping Cart
             </div>
