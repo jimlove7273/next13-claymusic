@@ -6,7 +6,11 @@ const Supportus = () => {
       <div className="text-2xl font-bold mb-5">支持我們 / Support Us</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <img className="w-full" src="/images/supportus.jpeg" />
+          <img
+            className="w-full"
+            src="/images/supportus.jpeg"
+            alt="Support Us"
+          />
         </div>
         <div className="text-gray-700">
           泥土音樂是美國非營利機構, 宗旨是用音樂傳揚神的愛.
@@ -30,7 +34,11 @@ const Supportus = () => {
           <br />
           <div className="flex mt-10">
             <div className="flex hover:bg-blue-200 items-center space-x-7 p-2 border border-blue-200 rounded-md cursor-pointer">
-              <img className="w-10 mr-3" src="/images/icon-paypal.svg" />
+              <img
+                className="w-10 mr-3"
+                src="/images/icon-paypal.svg"
+                alt="PayPal"
+              />
               我要奉獻 / Donation Now
             </div>
           </div>

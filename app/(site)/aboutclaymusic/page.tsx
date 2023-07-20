@@ -32,7 +32,7 @@ const AboutClayMusic = () => {
           <br />～ 「泥土音樂」負責人 盛曉玫
         </div>
         <div>
-          <img src="/images/soilinhand.jpg" />
+          <img src="/images/soilinhand.jpg" alt="Soil in Hand" />
         </div>
       </div>
     </div>

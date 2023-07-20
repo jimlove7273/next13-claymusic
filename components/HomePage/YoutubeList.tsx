@@ -36,8 +36,6 @@ const YoutubeList = () => {
           setYoutubes((prevYoutubes) => [...prevYoutubes, ytData]);
         });
     });
-
-    console.log('youtubes', youtubes);
   }, []);
 
   const playVideo = (videoId: string) => {
