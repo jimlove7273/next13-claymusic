@@ -136,6 +136,10 @@ export const heroContent = {
 };
 
 export const albums = {
+  albumnone: {
+    index: 0,
+    songs: [],
+  },
   albumdearfriend: {
     index: 1,
     songs: [

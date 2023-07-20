@@ -26,7 +26,9 @@ export const useCartStore = create<cartItemsProps>()(
       cart: [],
       addToCart: (product: cartProduct) => {
         const cart = get().cart;
-        const findProduct = cart.find((p) => p.id === product.id);
+        const findProduct = cart.find(
+          (p) => p.itemNumber === product.itemNumber,
+        );
         if (findProduct) {
           findProduct.quantity! += 1;
         } else {
