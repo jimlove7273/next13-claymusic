@@ -3,10 +3,9 @@ import React, { useEffect, useRef } from 'react';
 import { useCartStore } from '../../store/cartStore';
 import { IoClose } from 'react-icons/io5';
 import { BsTrash } from 'react-icons/bs';
-import './cartPanel.css';
 
 export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
-  const ref = useRef(null);
+  //const ref = useRef(null);
   const {
     cart,
     cartTotalAmount,
@@ -22,6 +21,13 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
     cartCalculator();
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = 'auto';
+    if (showCartPanel) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [showCartPanel]);
+
   const removingFromCart = (itemNumber: string) => {
     if (confirm('Are you sure you want to deleting this record?')) {
       removeFromCart(itemNumber);
@@ -33,16 +39,16 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
     <>
       <div
         className={`${
-          showCartPanel ? 'absolute z-10' : 'hidden'
-        } top-0 left-0 w-full h-screen bg-gray-900/60`}
+          showCartPanel ? 'absolute' : 'hidden'
+        } z-20 top-0 left-0 w-full h-screen bg-gray-900/60`}
         onClick={() => setShowCartPanel(false)}
       >
         &nbsp;
       </div>
       <div
         id="cartPanel"
-        ref={ref}
-        className={`z-10 absolute top-0 right-0 h-full transition-all duration-300 bg-stone-100 p-3
+        //ref={ref}
+        className={`z-30 absolute top-0 right-0 h-screen transition-all duration-300 bg-stone-100 p-3
       ${showCartPanel ? '' : 'translate-x-full'}
       shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]`}
       >

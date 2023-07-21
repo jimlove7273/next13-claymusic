@@ -1,7 +1,6 @@
 'use client';
 import '../globals.css';
 import { usePathname } from 'next/navigation';
-import 'tw-elements/dist/css/tw-elements.min.css';
 
 // Import Global Components
 import { TopNav } from '@/components/TopNav/TopNav';

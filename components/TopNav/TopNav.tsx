@@ -1,6 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import NoSSR from 'react-no-ssr';
 import { albumList } from '@/app/constants';
 import { CartPanel } from '../CartPanel/CartPanel';
 import { useCartStore } from '../../store/cartStore';
@@ -13,15 +14,24 @@ export const TopNav = () => {
 
   const { cartQty } = useCartStore();
 
+  useEffect(() => {
+    document.body.style.overflow = 'auto';
+    if (showMenuPanel) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [showMenuPanel]);
+
   return (
     <nav
       id="page-nav"
       className="md:fixed top-0 w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex"
     >
-      <CartPanel
-        showCartPanel={showCartPanel}
-        setShowCartPanel={setShowCartPanel}
-      />
+      <NoSSR>
+        <CartPanel
+          showCartPanel={showCartPanel}
+          setShowCartPanel={setShowCartPanel}
+        />
+      </NoSSR>
       <div className="w-full max-w-[1280px] mx-auto">
         <div className="flex justify-between h-full items-center px-3">
           <div>
