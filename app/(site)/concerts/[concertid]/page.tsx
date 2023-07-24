@@ -6,7 +6,7 @@ const Concerts = async () => {
 
   return (
     <>
-      <div className="relative my-8 md:my-24 p-3 -z-20">
+      <div className="relative my-8 p-3 -z-20">
         <div className="text-2xl font-bold">Clay Music Concerts</div>
         <div className="mb-5">Single Concert</div>
         <div>&nbsp;</div>
