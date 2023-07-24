@@ -1,10 +1,11 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { useCartStore } from '../../store/cartStore';
+import { usePanelStore } from '../../store/panelStore';
 import { IoClose } from 'react-icons/io5';
 import { BsTrash } from 'react-icons/bs';
 
-export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
+export const CartPanel = () => {
   //const ref = useRef(null);
   const {
     cart,
@@ -13,6 +14,8 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
     updateQuantity,
     removeFromCart,
   } = useCartStore();
+
+  const { cartPanel, toggleCartPanel } = usePanelStore();
 
   /**
    * Run the shopping cart calculator upon entering the page
@@ -23,10 +26,10 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
 
   useEffect(() => {
     document.body.style.overflow = 'auto';
-    if (showCartPanel) {
+    if (cartPanel) {
       document.body.style.overflow = 'hidden';
     }
-  }, [showCartPanel]);
+  }, [cartPanel]);
 
   const removingFromCart = (itemNumber: string) => {
     if (confirm('Are you sure you want to deleting this record?')) {
@@ -39,9 +42,9 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
     <>
       <div
         className={`${
-          showCartPanel ? 'absolute' : 'hidden'
+          cartPanel ? 'absolute' : 'hidden'
         } z-20 top-0 left-0 w-full h-screen bg-gray-900/60`}
-        onClick={() => setShowCartPanel(false)}
+        onClick={() => toggleCartPanel()}
       >
         &nbsp;
       </div>
@@ -49,11 +52,11 @@ export const CartPanel = ({ showCartPanel, setShowCartPanel }: any) => {
         id="cartPanel"
         //ref={ref}
         className={`z-30 absolute top-0 right-0 h-screen transition-all duration-300 bg-stone-100 p-3
-      ${showCartPanel ? '' : 'translate-x-full'}
+      ${cartPanel ? '' : 'translate-x-full'}
       shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)]`}
       >
         <div className="flex justify-end">
-          <button onClick={(e) => setShowCartPanel(false)}>
+          <button onClick={(e) => toggleCartPanel()}>
             <IoClose size={30} />
           </button>
         </div>

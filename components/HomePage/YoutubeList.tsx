@@ -1,11 +1,13 @@
 'use client';
 import { HomeYoutubeList } from '@/app/constants';
 import React, { useState, useEffect } from 'react';
+import { usePanelStore } from '../../store/panelStore';
 import Link from 'next/link';
 
 import YoutubePlay from './YoutubePlay';
 
 const YoutubeList = () => {
+  const { cartPanel } = usePanelStore();
   const [playYoutube, setPlayYoutube] = useState('');
   const [youtubes, setYoutubes] = useState<
     Array<{
@@ -43,7 +45,9 @@ const YoutubeList = () => {
   };
 
   return (
-    <div className="relative container mx-auto z-0">
+    <div
+      className={`relative container mx-auto ${cartPanel ? 'z-[-1]' : 'z-[0]'}`}
+    >
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         {youtubes
           .sort((a, b) => a.id - b.id)

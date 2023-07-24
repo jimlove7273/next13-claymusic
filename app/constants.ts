@@ -145,58 +145,47 @@ export const albums = {
     songs: [
       {
         title: '為何對我這麼好',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-01.mp3',
       },
       {
         title: '你名何其美',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-02.mp3',
       },
       {
         title: '親密的朋友',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-03.mp3',
       },
       {
         title: '自由',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-04.mp3',
       },
       {
         title: '打開黑暗的角落',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-05.mp3',
       },
       {
         title: '榮耀歸神 平安給人',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-06.mp3',
       },
       {
         title: '水火',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-07.mp3',
       },
       {
         title: '我一生',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-08.mp3',
       },
       {
         title: '給你真平安',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-09.mp3',
       },
       {
         title: '放手交給祂',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-10.mp3',
       },
       {
         title: '新天地',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/01-11.mp3',
       },
     ],
   },
@@ -205,13 +194,11 @@ export const albums = {
     songs: [
       {
         title: '我多麼需要有你',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-01.mp3',
       },
       {
         title: '在祂沒有難成的事',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-02.mp3',
       },
       {
         title: '有一天',
@@ -219,48 +206,39 @@ export const albums = {
       },
       {
         title: '奇妙神蹟',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-04.mp3',
       },
       {
         title: '陪我',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-05.mp3',
       },
       {
         title: '看見神的愛',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-06.mp3',
       },
       {
         title: '只要耶穌',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-07.mp3',
       },
       {
         title: '渴慕',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-08.mp3',
       },
       {
         title: '牽我手',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-09.mp3',
       },
       {
         title: '祂是道路',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-10.mp3',
       },
       {
         title: '擁抱新的每一天',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-11.mp3',
       },
       {
         title: '泥土的禱告',
-        mp3url:
-          'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        mp3url: 'https://www.claymusic.org/wp-content/media/audio/02-12.mp3',
       },
     ],
   },

@@ -5,12 +5,14 @@ import NoSSR from 'react-no-ssr';
 import { albumList } from '@/app/constants';
 import { CartPanel } from '../CartPanel/CartPanel';
 import { useCartStore } from '../../store/cartStore';
+import { usePanelStore } from '../../store/panelStore';
 import { IoMdClose, IoIosMenu } from 'react-icons/io';
 
 export const TopNav = () => {
   const [whichDrop, setWhichDrop] = useState('');
-  const [showCartPanel, setShowCartPanel] = useState(false);
+  // const [showCartPanel, setShowCartPanel] = useState(false);
   const [showMenuPanel, setShowMenuPanel] = useState(false);
+  const { cartPanel, toggleCartPanel } = usePanelStore();
 
   const { cartQty } = useCartStore();
 
@@ -24,13 +26,10 @@ export const TopNav = () => {
   return (
     <nav
       id="page-nav"
-      className="md:fixed top-0 w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex"
+      className="md:fixed top-0 w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex z-40"
     >
       <NoSSR>
-        <CartPanel
-          showCartPanel={showCartPanel}
-          setShowCartPanel={setShowCartPanel}
-        />
+        <CartPanel />
       </NoSSR>
       <div className="w-full max-w-[1280px] mx-auto">
         <div className="flex justify-between h-full items-center px-3">
@@ -176,7 +175,7 @@ export const TopNav = () => {
             <div className="hidden md:block relative">
               <div
                 className="px-1 mt-1 cursor-pointer"
-                onClick={(e) => setShowCartPanel((prev) => !prev)}
+                onClick={(e) => toggleCartPanel()}
               >
                 <img width={25} src="/images/icon-cart.png" alt="Cart" />
                 <div className="absolute w-[15px] h-[15px] top-1 right-[-5px] text-[9px] flex pt-[1px] justify-center bg-[#fb7701] text-white rounded-full">
@@ -355,7 +354,7 @@ export const TopNav = () => {
                 <div className="inline-block relative">
                   <div
                     className="px-1 mt-1 cursor-pointer"
-                    onClick={(e) => setShowCartPanel((prev) => !prev)}
+                    onClick={(e) => toggleCartPanel()}
                   >
                     <img width={25} src="/images/icon-cart.png" alt="Cart" />
                     <div className="absolute w-[15px] h-[15px] top-[-1px] right-[-5px] text-[9px] text-center bg-[#fb7701] text-white rounded-full">

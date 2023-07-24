@@ -25,7 +25,7 @@ const SongPlayer = React.memo(
       resetCurrentSong,
     } = useCurrentSong();
 
-    const [duration, setDuration] = useState();
+    const [duration, setDuration] = useState<number>();
 
     /**
      * function: handleTimeUpdcate
@@ -206,7 +206,9 @@ const SongPlayer = React.memo(
                       style={{ width: `${memoizedProgress}%` }}
                     ></div>
                   </div>
-                  <div className="text-[13px]">{formatDuration(duration)}</div>
+                  <div className="text-[13px]">
+                    {formatDuration(duration ?? 0)}
+                  </div>
                 </div>
                 <div className="ml-2 pl-4 border-l border-gray-200">
                   <div className="font-bold">{memoizedCurrentSong.title}</div>
