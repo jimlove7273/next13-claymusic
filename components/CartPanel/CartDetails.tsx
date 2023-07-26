@@ -1,5 +1,6 @@
 'use client';
 import { useCartStore } from '../../store/cartStore';
+import Image from 'next/image';
 
 const CartDetails = () => {
   const { cart, cartTotalAmount } = useCartStore();
@@ -16,10 +17,20 @@ const CartDetails = () => {
               <div className="flex text-gray-600">
                 <div className="mr-2 max-w-[50px]">
                   {item.productType === 'CD' && (
-                    <img src="/images/icon-cd.png" alt="MP3" />
+                    <Image
+                      src={`/images/album/${item.productCover}.jpeg`}
+                      width={50}
+                      height={45}
+                      alt="CD"
+                    />
                   )}
                   {item.productType === 'SB' && (
-                    <img src="/images/icon-sb.png" alt="MP3" />
+                    <Image
+                      src={`/images/album/${item.productCover}.jpeg`}
+                      width={50}
+                      height={60}
+                      alt="Song Book"
+                    />
                   )}
                   {item.productType === 'MP3' && (
                     <img src="/images/icon-mp3.png" alt="MP3" />

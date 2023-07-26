@@ -1,12 +1,13 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useCartStore } from '../../store/cartStore';
 import { usePanelStore } from '../../store/panelStore';
 import { IoClose } from 'react-icons/io5';
 import { BsTrash } from 'react-icons/bs';
+import { useRouter } from 'next/navigation';
 
 export const CartPanel = () => {
-  //const ref = useRef(null);
   const {
     cart,
     cartTotalAmount,
@@ -14,6 +15,8 @@ export const CartPanel = () => {
     updateQuantity,
     removeFromCart,
   } = useCartStore();
+
+  const router = useRouter();
 
   const { cartPanel, toggleCartPanel } = usePanelStore();
 
@@ -36,6 +39,11 @@ export const CartPanel = () => {
       removeFromCart(itemNumber);
       cartCalculator();
     }
+  };
+
+  const handleCheckout = () => {
+    router.push('/checkout');
+    toggleCartPanel();
   };
 
   return (
@@ -79,10 +87,21 @@ export const CartPanel = () => {
                   </div>
                   <div className="mr-2 max-w-[50px]">
                     {item.productType === 'CD' && (
-                      <img src="/images/icon-cd.png" alt="MP3" />
+                      <Image
+                        src={`/images/album/${item.productCover}.jpeg`}
+                        width={50}
+                        height={45}
+                        alt="CD"
+                      />
                     )}
                     {item.productType === 'SB' && (
-                      <img src="/images/icon-sb.png" alt="MP3" />
+                      <Image
+                        src={`/images/album/${item.productCover}.jpeg`}
+                        width={50}
+                        height={65}
+                        alt="Song Book"
+                        className="object-cover h-[65px]"
+                      />
                     )}
                     {item.productType === 'MP3' && (
                       <img src="/images/icon-mp3.png" alt="MP3" />
@@ -146,7 +165,10 @@ export const CartPanel = () => {
           )}
         </div>
         <div>
-          <div className="mt-10 bg-orange-600 text-white text-center p-2 rounded-full cursor-pointer">
+          <div
+            className="mt-10 bg-orange-600 text-white text-center p-2 rounded-full cursor-pointer"
+            onClick={handleCheckout}
+          >
             Check Out
           </div>
         </div>

@@ -5,6 +5,7 @@ type cartProduct = {
   id: number;
   itemNumber: string;
   product: string | undefined;
+  productCover: string;
   productType: 'CD' | 'SB' | 'MP3';
   quantity: number;
   price: number;

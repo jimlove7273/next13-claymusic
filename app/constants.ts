@@ -2,6 +2,7 @@ export const albumList = [
   {
     chineseName: '平安 永不離開',
     englishName: 'Peace Remains',
+    seq: 10,
     link: '/album/peaceremains',
     albumCover: 'CD-PeaceRemains',
     songbookCover: '',
@@ -11,6 +12,7 @@ export const albumList = [
   {
     chineseName: '暢銷精選 USB禮卡',
     englishName: 'USB Gift Card',
+    seq: 14,
     link: '/album/usbgiftcard',
     albumCover: 'CD-ConcertSongs',
     songbookCover: '',
@@ -20,6 +22,7 @@ export const albumList = [
   {
     chineseName: '日語專輯：愛を形に',
     englishName: 'Japanese Live Out Love',
+    seq: 9,
     link: '/album/japliveoutlove',
     albumCover: 'CD-Japanese1',
     songbookCover: '',
@@ -29,6 +32,7 @@ export const albumList = [
   {
     chineseName: '不變的愛',
     englishName: 'Unchanging Love',
+    seq: 8,
     link: '/album/unchanginglove',
     albumCover: 'CD-UnchangingLove',
     songbookCover: '',
@@ -38,6 +42,7 @@ export const albumList = [
   {
     chineseName: '好心情',
     englishName: 'Feeling Happy',
+    seq: 7,
     link: '/album/feelinghappy',
     albumCover: 'CD-FeelingHappy',
     songbookCover: '',
@@ -47,6 +52,7 @@ export const albumList = [
   {
     chineseName: '幸福',
     englishName: 'Blessed',
+    seq: 6,
     link: '/album/blessed',
     albumCover: 'CD-Blessed',
     songbookCover: '',
@@ -56,6 +62,7 @@ export const albumList = [
   {
     chineseName: '信心',
     englishName: 'Faith',
+    seq: 5,
     link: '/album/faith',
     albumCover: 'CD-Faith',
     songbookCover: '',
@@ -65,6 +72,7 @@ export const albumList = [
   {
     chineseName: '就在這裡',
     englishName: 'Right Here',
+    seq: 4,
     link: '/album/righthere',
     albumCover: 'CD-RightHere',
     songbookCover: '',
@@ -74,6 +82,7 @@ export const albumList = [
   {
     chineseName: '腳步',
     englishName: 'Footsteps',
+    seq: 3,
     link: '/album/footsteps',
     albumCover: 'CD-Footsteps',
     songbookCover: '',
@@ -103,6 +112,7 @@ export const albumList = [
   {
     chineseName: '泥娃娃 2',
     englishName: 'Say Yes to Jesus',
+    seq: 12,
     link: '/album/sayyestojesus',
     albumCover: 'CD-SayYesToJesus',
     songbookCover: '',
@@ -112,6 +122,7 @@ export const albumList = [
   {
     chineseName: '泥娃娃 #1',
     englishName: 'Clay Kids #1',
+    seq: 11,
     link: '/album/claykids',
     albumCover: 'CD-ClayKids1',
     songbookCover: '',
@@ -121,6 +132,7 @@ export const albumList = [
   {
     chineseName: '鋼琴輕音樂',
     englishName: 'Piano Volume 1',
+    seq: 13,
     link: '/album/pianovol1',
     albumCover: 'CD-PianoMusic',
     songbookCover: '',

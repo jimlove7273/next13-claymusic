@@ -24,7 +24,7 @@ export default function RootLayout({
                 pathname === '/'
                   ? 'left-0 w-screen max-w-none'
                   : 'w-full max-w-[1280px] p-3'
-              } mx-auto md:mt-[65px]`}
+              } mx-auto mt-10 md:mt-[65px]`}
             >
               {children}
             </main>

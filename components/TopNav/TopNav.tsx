@@ -26,7 +26,7 @@ export const TopNav = () => {
   return (
     <nav
       id="page-nav"
-      className="md:fixed top-0 w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex z-40"
+      className="fixed top-0 w-full border h-16 border-b-slate-200 bg-[#f4f2ed] flex z-40"
     >
       <NoSSR>
         <CartPanel />

@@ -18,6 +18,7 @@ const AlbumSinglePage = ({ params }: any) => {
     (checkAlbum) => checkAlbum.link === '/album/' + params.albumId,
   );
   if (foundAlbum.length > 0) {
+    console.log('foundAlbum', foundAlbum);
     chineseName = foundAlbum[0].chineseName;
     englishName = foundAlbum[0].englishName;
     albumCover = foundAlbum[0].albumCover;
@@ -41,10 +42,12 @@ const AlbumSinglePage = ({ params }: any) => {
       id: albumSeq,
       itemNumber: albumType + albumSeq,
       product: englishName + ' | ' + chineseName,
+      productCover: albumCover,
       productType: albumType,
       quantity: 1,
       price: albumType === 'CD' ? 10.99 : 5.99,
     };
+    console.log('addToCartInfo', addToCartInfo);
     addToCart(addToCartInfo);
     cartCalculator();
   };
@@ -77,7 +80,7 @@ const AlbumSinglePage = ({ params }: any) => {
             </div>
           </div>
         </div>
-        <div className="md:w-3/5 xs:w-full">
+        <div className="w-full md:w-[70%]">
           <div className="text-4xl">
             {chineseName} {englishName}
           </div>
