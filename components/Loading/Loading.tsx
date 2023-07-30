@@ -1,11 +1,16 @@
 import React from 'react';
 
-const loading = () => {
+const Loading = () => {
   return (
-    <div role="status">
+    <button
+      disabled
+      type="button"
+      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+    >
       <svg
         aria-hidden="true"
-        className="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+        role="status"
+        className="inline w-4 h-4 mr-3 text-white animate-spin"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -20,8 +25,8 @@ const loading = () => {
         />
       </svg>
       <span className="sr-only">Please Wait...</span>
-    </div>
+    </button>
   );
 };
 
-export default loading;
+export default Loading;

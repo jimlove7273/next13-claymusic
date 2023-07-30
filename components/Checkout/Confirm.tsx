@@ -1,6 +1,8 @@
 import React from 'react';
+import { useCheckout } from '../../store/checkOutStore';
 
 const Confirm = () => {
+  const checkoutStep = useCheckout((state) => state.checkoutStep);
   return (
     <div className="p-4">
       <button className="w-full mt-3 flex flex-col">

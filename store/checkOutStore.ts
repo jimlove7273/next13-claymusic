@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-type addressInfo = {
+export type addressInfo = {
   firstName: string;
   lastName: string;
   email?: string;
@@ -15,7 +15,7 @@ type addressInfo = {
   phone?: string;
 };
 
-const initialBillingInfo = {
+export const initialBillingInfo: addressInfo = {
   firstName: '',
   lastName: '',
   email: '',
@@ -32,8 +32,14 @@ const initialBillingInfo = {
 type checkOutProps = {
   billingInfo: addressInfo;
   shippingInfo: addressInfo;
-  enteredBilling: boolean;
-  enteredShipping: boolean;
+  enteredBilling: boolean | null;
+  enteredShipping: boolean | null;
+  checkoutStep: number;
+  setStep: (checkoutStep: number) => void;
+  setBilling: (billing: boolean) => void;
+  setBillingInfo: (field: keyof addressInfo, info: any) => void;
+  setShipping: (shipping: boolean) => void;
+  setShippingInfo: (field: keyof addressInfo, info: any) => void;
   toggleBilling: () => void;
   toggleShipping: () => void;
 };
@@ -43,8 +49,34 @@ export const useCheckout = create<checkOutProps>()(
     (set, get) => ({
       billingInfo: initialBillingInfo,
       shippingInfo: initialBillingInfo,
-      enteredBilling: false,
-      enteredShipping: false,
+      enteredBilling: null,
+      enteredShipping: null,
+      checkoutStep: 0,
+      setStep: (checkoutStep: number) => {
+        set({ checkoutStep });
+      },
+      setBilling: (billing: boolean) => {
+        set({ enteredBilling: billing });
+      },
+      setBillingInfo: (field, info) => {
+        set((state) => ({
+          billingInfo: {
+            ...state.billingInfo,
+            [field]: info,
+          },
+        }));
+      },
+      setShipping: (shipping: boolean) => {
+        set({ enteredShipping: shipping });
+      },
+      setShippingInfo: (field, info) => {
+        set((state) => ({
+          shippingInfo: {
+            ...state.shippingInfo,
+            [field]: info,
+          },
+        }));
+      },
       toggleBilling: () => {
         const enteredBilling = get().enteredBilling;
         set({ enteredBilling: !enteredBilling });

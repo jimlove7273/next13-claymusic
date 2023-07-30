@@ -18,6 +18,7 @@ const CartDetails = () => {
                 <div className="mr-2 max-w-[50px]">
                   {item.productType === 'CD' && (
                     <Image
+                      className="h-[45px]"
                       src={`/images/album/${item.productCover}.jpeg`}
                       width={50}
                       height={45}
@@ -26,6 +27,7 @@ const CartDetails = () => {
                   )}
                   {item.productType === 'SB' && (
                     <Image
+                      className="h-[60px]"
                       src={`/images/album/${item.productCover}.jpeg`}
                       width={50}
                       height={60}
