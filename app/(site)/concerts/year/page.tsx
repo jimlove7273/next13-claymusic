@@ -15,24 +15,29 @@ const Concerts = async () => {
           let concertDate = parseDate(concert.date);
           return (
             <>
-              <div className="flex flex-col md:flex-row justify-between hover:bg-blue-50  items-center py-2  border-t border-gray-300">
-                <div className="flex justify-between w-full md:w-2/3">
-                  <div className="flex flex-col md:flex-row items-end">
-                    <div className="text-3xl font-bold ml-4 mr-2">
-                      {concertDate.day}
+              <div className="w-full">
+                <div className="flex w-full justify-between items-center gap-4 mx-auto px-4 py-2 border-b">
+                  <div className="flex flex-col sm:flex-row gap-0 sm:gap-6">
+                    <div className="flex flex-row sm:flex-col gap-2 sm:gap-0 items-center text-center text-green-600">
+                      <div className="block text-2xl font-bold">
+                        {concertDate.day}
+                      </div>
+                      <div className="text-sm">
+                        {monthNumtoStr(concertDate.month, 'full')}
+                      </div>
                     </div>
-                    <div className="text-base mx-auto">
-                      {monthNumtoStr(concertDate.month, 'short')}
+                    <div>
+                      <div className="font-bold mb-1 text-[18px] text-gray-600 sm:text-xl">
+                        {concert.name}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {concertDate.time} :: {concert.venue}
+                      </div>
                     </div>
                   </div>
-                  <div className="text-sm">
-                    {concert.name}
-                    <br />
-                    {concertDate.time} @ {concert.venue}
+                  <div className="bg-green-600 text-white text-[14px] py-1 px-3 rounded-md cursor-pointer">
+                    Details
                   </div>
-                </div>
-                <div className="text-sm rounded-md border md:my-0 mt-4 py-2 md:py-0 mb-2 hover:bg-gray-500 hover:text-white cursor-pointer border-gray-500 px-2 mr-4">
-                  Details
                 </div>
               </div>
             </>
