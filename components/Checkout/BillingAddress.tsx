@@ -9,6 +9,10 @@ const BillingAddress = () => {
   const setBillingInfo = useCheckout((state) => state.setBillingInfo);
   const setStep = useCheckout((state) => state.setStep);
 
+  if (enteredBilling === null && billingInfo.firstName === '') {
+    setBilling(false);
+  }
+
   // -- define which fields are REQUIRED
   const requiredFields: (keyof addressInfo)[] = [
     'firstName',

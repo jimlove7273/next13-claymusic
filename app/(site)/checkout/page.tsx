@@ -18,6 +18,7 @@ const CartDetails = dynamic(
 
 const CheckOutScreen = () => {
   const checkoutStep = useCheckout((state) => state.checkoutStep);
+  console.log('** checkoutStep', checkoutStep);
 
   return (
     <div className="flex flex-col-reverse md:flex-row w-full mx-auto my-10 gap-10">

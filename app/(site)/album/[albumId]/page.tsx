@@ -7,7 +7,10 @@ import Image from 'next/image';
 
 import SongPlayer from '@/components/SongPlayer/SongPlayer';
 
+import { usePanelStore } from '@/store/panelStore';
+
 const AlbumSinglePage = ({ params }: any) => {
+  const { toggleCartPanel } = usePanelStore();
   // Get Album info
   let chineseName: string = '';
   let englishName: string = '';
@@ -47,9 +50,10 @@ const AlbumSinglePage = ({ params }: any) => {
       quantity: 1,
       price: albumType === 'CD' ? 10.99 : 5.99,
     };
-    console.log('addToCartInfo', addToCartInfo);
+    console.log('** addToCartInfo', addToCartInfo);
     addToCart(addToCartInfo);
     cartCalculator();
+    toggleCartPanel();
   };
 
   return (
@@ -65,27 +69,29 @@ const AlbumSinglePage = ({ params }: any) => {
               height={500}
             />
           </div>
-          <div className="mt-10">
-            我要買
-            <div className="flex space-x-2 mt-2">
-              <div className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-1 rounded-md cursor-pointer">
-                <div onClick={() => addToCartFunc('CD')}>+ CD</div>
-              </div>
-              <div
-                onClick={() => addToCartFunc('SB')}
-                className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-1 rounded-md cursor-pointer"
-              >
-                + 歌本
+          {albumSongs.length > 0 && (
+            <div className="mt-10">
+              我要買
+              <div className="flex space-x-2 mt-2">
+                <div className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-1 rounded-md cursor-pointer">
+                  <div onClick={() => addToCartFunc('CD')}>+ CD</div>
+                </div>
+                <div
+                  onClick={() => addToCartFunc('SB')}
+                  className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-1 rounded-md cursor-pointer"
+                >
+                  + 歌本
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
         <div className="w-full md:w-[70%]">
           <div className="text-4xl">
             {chineseName} {englishName}
           </div>
           <div className="mt-10">
-            {albumSongs.length === 0 && <div>Song Information Found</div>}
+            {albumSongs.length === 0 && <div>未找到歌曲信息!</div>}
             {albumSongs.length > 0 &&
               albumSongs.map((song) => (
                 <div
