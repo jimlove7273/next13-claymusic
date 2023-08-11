@@ -1,5 +1,6 @@
 import { parseDate, monthNumtoStr } from '@/functions/utilities';
 import { getConcerts } from '@/sanity/sanity-utils';
+import Link from 'next/link';
 
 const Concerts = async () => {
   const concerts = await getConcerts();
@@ -31,9 +32,12 @@ const Concerts = async () => {
                     {concertDate.time} @ {concert.venue}
                   </div>
                 </div>
-                <div className="text-sm rounded-md border md:my-0 mt-4 py-2 md:py-0 mb-2 hover:bg-gray-500 hover:text-white cursor-pointer border-gray-500 px-2 mr-4">
+                <Link
+                  href="/concerts/check"
+                  className="text-sm rounded-md border md:my-0 mt-4 py-2 md:py-0 mb-2 hover:bg-gray-500 hover:text-white cursor-pointer border-gray-500 px-2 mr-4"
+                >
                   Details
-                </div>
+                </Link>
               </div>
             </>
           );
