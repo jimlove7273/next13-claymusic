@@ -158,7 +158,7 @@ export const TopNav = () => {
                   onClick={(e) => toggleCartPanel()}
                 >
                   <img width={25} src="/images/icon-cart.png" alt="Cart" />
-                  <div className="absolute w-[15px] h-[15px] top-2 right-[-5px] text-[9px] flex pt-[1px] justify-center bg-[#fb7701] text-white rounded-full">
+                  <div className="absolute w-[15px] h-[15px] top-0 right-[-5px] text-[9px] flex pt-[1px] justify-center bg-[#fb7701] text-white rounded-full">
                     {cartQty}
                   </div>
                 </div>

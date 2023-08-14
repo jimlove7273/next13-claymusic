@@ -1,5 +1,6 @@
 import React from 'react';
 import { albumList, heroContent } from '@/app/constants';
+import Link from 'next/link';
 
 const AlbumList = () => {
   const featuredAlbum = albumList.find((album) => album.featured === true);
@@ -30,10 +31,12 @@ const AlbumList = () => {
                     {album.chineseName}/{album.englishName}
                   </div>
                   <div className="bg-white transition-all duration-300 p-2 hover:p-0">
-                    <img
-                      src={'/images/album/' + album.albumCover + '.jpeg'}
-                      alt={album.englishName}
-                    />
+                    <Link href={album.link}>
+                      <img
+                        src={'/images/album/' + album.albumCover + '.jpeg'}
+                        alt={album.englishName}
+                      />
+                    </Link>
                   </div>
                 </div>
               ))}
