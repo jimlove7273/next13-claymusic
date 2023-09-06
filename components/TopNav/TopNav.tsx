@@ -34,7 +34,7 @@ export const TopNav = () => {
           <div>
             <img src="/images/home_logoEng.png" width={240} alt="Logo" />
           </div>
-          <div className="flex">
+          <div>
             <div
               className={`${
                 showMenuPanel ? 'absolute' : 'hidden'
