@@ -10,6 +10,9 @@ import { IoMdClose, IoIosMenu } from 'react-icons/io';
 
 export const TopNav = () => {
   const [showMenuPanel, setShowMenuPanel] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 0,
+  );
   const { toggleCartPanel } = usePanelStore();
 
   const { cartQty } = useCartStore();
@@ -20,6 +23,22 @@ export const TopNav = () => {
       document.body.style.overflow = 'hidden';
     }
   }, [showMenuPanel]);
+
+  useEffect(() => {
+    console.log('this ran...');
+    // Update windowWidth when the window is resized
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <nav
@@ -48,9 +67,8 @@ export const TopNav = () => {
               className={`absolute w-[90%] max-w-[320px] h-screen flex flex-col bg-white top-0 left-0
               md:flex md:flex-row md:h-auto md:relative md:bg-transparent md:w-full md:max-w-full
               transition-all duration-300 ${
-                showMenuPanel === false &&
-                window.innerWidth < 768 &&
-                '-translate-x-full'
+                showMenuPanel === false && windowWidth < 768 && ''
+                // '-translate-x-full'
               }`}
             >
               <div className={`${showMenuPanel ? 'block my-10' : 'hidden'}`}>
