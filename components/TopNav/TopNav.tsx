@@ -1,44 +1,48 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import NoSSR from 'react-no-ssr';
-import { albumList } from '@/app/constants';
-import { CartPanel } from '../CartPanel/CartPanel';
-import { useCartStore } from '../../store/cartStore';
-import { usePanelStore } from '../../store/panelStore';
-import { IoMdClose, IoIosMenu } from 'react-icons/io';
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import NoSSR from "react-no-ssr";
+import { albumList } from "@/app/constants";
+import { CartPanel } from "../CartPanel/CartPanel";
+import { useCartStore } from "../../store/cartStore";
+import { usePanelStore } from "../../store/panelStore";
+import { IoMdClose, IoIosMenu } from "react-icons/io";
 
 export const TopNav = () => {
   const [showMenuPanel, setShowMenuPanel] = useState(false);
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== 'undefined' ? window.innerWidth : 0,
+    typeof window !== "undefined" ? window.innerWidth : 0,
   );
   const { toggleCartPanel } = usePanelStore();
 
   const { cartQty } = useCartStore();
 
   useEffect(() => {
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
     if (showMenuPanel) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
   }, [showMenuPanel]);
 
   useEffect(() => {
-    console.log('this ran...');
     // Update windowWidth when the window is resized
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
 
     // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Remove event listener on component unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    console.log("** showMenuPanel", showMenuPanel);
+    console.log("** windowWidth", windowWidth);
+  }, [windowWidth]);
 
   return (
     <nav
@@ -56,7 +60,7 @@ export const TopNav = () => {
           <div>
             <div
               className={`${
-                showMenuPanel ? 'absolute' : 'hidden'
+                showMenuPanel ? "absolute" : "hidden"
               } top-0 left-0 w-full h-screen bg-gray-900/60`}
               onClick={() => setShowMenuPanel(false)}
             >
@@ -64,14 +68,15 @@ export const TopNav = () => {
             </div>
             <div
               id="right-nav"
-              className={`absolute w-[90%] max-w-[320px] h-screen flex flex-col bg-white top-0 left-0
+              className={`absolute w-[90%] max-w-[350px] h-screen flex flex-col bg-white top-0 left-0
               md:flex md:flex-row md:h-auto md:relative md:bg-transparent md:w-full md:max-w-full
               transition-all duration-300 ${
-                showMenuPanel === false && windowWidth < 768 && ''
-                // '-translate-x-full'
+                showMenuPanel === false &&
+                windowWidth < 768 &&
+                "-translate-x-full"
               }`}
             >
-              <div className={`${showMenuPanel ? 'block my-10' : 'hidden'}`}>
+              <div className={`${showMenuPanel ? "block my-10" : "hidden"}`}>
                 <div className="flex justify-between px-3">
                   <img src="/images/home_logoEng.png" width={240} alt="Logo" />
                   <button
@@ -85,11 +90,16 @@ export const TopNav = () => {
                   </button>
                 </div>
               </div>
-              <Link className="p-2 cursor-pointer hover:bg-blue-200" href="/">
+              <Link
+                className={`${showMenuPanel ? "p-2 pl-5" : "p-2"} cursor-pointer hover:bg-blue-200`}
+                href="/"
+              >
                 首頁
               </Link>
               <div className="group">
-                <div className="p-2 cursor-pointer group-hover:bg-blue-200">
+                <div
+                  className={`${showMenuPanel ? "p-2 pl-5" : "p-2"} cursor-pointer group-hover:bg-blue-200`}
+                >
                   關於我們
                 </div>
                 <div className="md:absolute hidden top-10 flex-col group-hover:flex bg-zinc-100 shadow-md shadow-blue-500/50">
@@ -120,7 +130,9 @@ export const TopNav = () => {
                 </div>
               </div>
               <div className="group">
-                <div className="p-2 cursor-pointer group-hover:bg-blue-200">
+                <div
+                  className={`${showMenuPanel ? "p-2 pl-5" : "p-2"} cursor-pointer group-hover:bg-blue-200`}
+                >
                   產品區
                 </div>
                 <div className="md:absolute md:top-10 hidden md:-translate-x-96 w-full md:w-[45rem] flex-col group-hover:flex bg-zinc-100 shadow-md shadow-blue-500/50 py-4 md:p-5">
@@ -129,7 +141,7 @@ export const TopNav = () => {
                       <Link
                         key={album.chineseName}
                         href={album.link}
-                        className="p-1 pl-3 hover:bg-[#a4cbed] cursor-pointer flex gap-2 items-center"
+                        className="m-1 p-1 pl-3 hover:bg-[#a4cbed] cursor-pointer flex gap-2 items-center"
                       >
                         <img
                           width="40"
@@ -143,7 +155,9 @@ export const TopNav = () => {
                 </div>
               </div>
               <div className="group">
-                <div className="p-2 cursor-pointer group-hover:bg-blue-200">
+                <div
+                  className={`${showMenuPanel ? "p-2 pl-5" : "p-2"} cursor-pointer group-hover:bg-blue-200`}
+                >
                   音樂會消息
                 </div>
                 <div className="md:absolute top-10 flex-col hidden group-hover:flex bg-zinc-100 shadow-md shadow-blue-500/50">
@@ -161,18 +175,21 @@ export const TopNav = () => {
                   </Link>
                 </div>
               </div>
-              <Link className="p-2 cursor-pointer hover:bg-blue-200" href="/">
+              <Link
+                className={`${showMenuPanel ? "p-2 pl-5" : "p-2"} cursor-pointer hover:bg-blue-200`}
+                href="/"
+              >
                 相片區
               </Link>
               <Link
-                className="p-2 cursor-pointer hover:bg-blue-200"
+                className={`${showMenuPanel ? "p-2 pl-5" : "p-2"} cursor-pointer hover:bg-blue-200`}
                 href="/supportus"
               >
                 支持我們
               </Link>
               <div className="md:flex items-center relative">
                 <div
-                  className="px-1 mt-1 cursor-pointer relative inline-block"
+                  className={`${showMenuPanel ? "p-2 pl-5" : "p-2"} mt-1 cursor-pointer relative inline-block`}
                   onClick={(e) => toggleCartPanel()}
                 >
                   <img width={25} src="/images/icon-cart.png" alt="Cart" />

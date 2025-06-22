@@ -1,6 +1,6 @@
-import { parseDate, monthNumtoStr } from '@/functions/utilities';
-import { getConcerts } from '@/sanity/sanity-utils';
-import Link from 'next/link';
+import { parseDate, monthNumtoStr } from "@/functions/utilities";
+import { getConcerts } from "@/sanity/sanity-utils";
+import Link from "next/link";
 
 const Concerts = async () => {
   const concerts = await getConcerts();
@@ -17,12 +17,12 @@ const Concerts = async () => {
           return (
             <>
               <div className="flex flex-row justify-between hover:bg-blue-50  items-center py-2  border-t border-gray-300">
-                <div className="flex flex-col md:flex-row items-center md:items-end w-20">
+                <div className="flex flex-col items-center justify-center w-20">
+                  <div className="text-sm text-zinc-700 mx-auto">
+                    {monthNumtoStr(concertDate.month, "short")}
+                  </div>
                   <div className="text-3xl font-bold ml-4 mr-2">
                     {concertDate.day}
-                  </div>
-                  <div className="text-base mx-auto">
-                    {monthNumtoStr(concertDate.month, 'short')}
                   </div>
                 </div>
                 <div className="flex ml-5 justify-start flex-col md:flex-row md:justify-between items-start md:items-center w-full md:w-2/3">

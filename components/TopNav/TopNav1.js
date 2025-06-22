@@ -1,15 +1,15 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import NoSSR from 'react-no-ssr';
-import { albumList } from '@/app/constants';
-import { CartPanel } from '../CartPanel/CartPanel';
-import { useCartStore } from '../../store/cartStore';
-import { usePanelStore } from '../../store/panelStore';
-import { IoMdClose, IoIosMenu } from 'react-icons/io';
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import NoSSR from "react-no-ssr";
+import { albumList } from "@/app/constants";
+import { CartPanel } from "../CartPanel/CartPanel";
+import { useCartStore } from "../../store/cartStore";
+import { usePanelStore } from "../../store/panelStore";
+import { IoMdClose, IoIosMenu } from "react-icons/io";
 
 export const TopNav1 = () => {
-  const [whichDrop, setWhichDrop] = useState('');
+  const [whichDrop, setWhichDrop] = useState("");
   // const [showCartPanel, setShowCartPanel] = useState(false);
   const [showMenuPanel, setShowMenuPanel] = useState(false);
   const { cartPanel, toggleCartPanel } = usePanelStore();
@@ -17,9 +17,9 @@ export const TopNav1 = () => {
   const { cartQty } = useCartStore();
 
   useEffect(() => {
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
     if (showMenuPanel) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
   }, [showMenuPanel]);
 
@@ -47,15 +47,15 @@ export const TopNav1 = () => {
              ---------------------------------------------------------------- */}
               <div
                 className="relative"
-                onMouseEnter={() => setWhichDrop('aboutus')}
-                onMouseLeave={() => setWhichDrop('')}
+                onMouseEnter={() => setWhichDrop("aboutus")}
+                onMouseLeave={() => setWhichDrop("")}
               >
                 <a className={`p-2 hover:bg-[#a4cbed]`} href="/">
                   關於我們
                 </a>
                 <div
                   className={`absolute flex pt-6 z-20 flex-col bg-[#a4cbed] text-gray-700 w-32 ${
-                    whichDrop === 'aboutus' ? '' : 'hidden'
+                    whichDrop === "aboutus" ? "" : "hidden"
                   } shadow-xl shadow-stone-500/50`}
                 >
                   <Link
@@ -92,8 +92,8 @@ export const TopNav1 = () => {
              * Products
              ---------------------------------------------------------------- */}
               <div
-                onMouseEnter={() => setWhichDrop('products')}
-                onMouseLeave={() => setWhichDrop('')}
+                onMouseEnter={() => setWhichDrop("products")}
+                onMouseLeave={() => setWhichDrop("")}
               >
                 <a className={`p-2 hover:bg-[#a4cbed]`} href="/">
                   產品區
@@ -102,7 +102,7 @@ export const TopNav1 = () => {
                 <div className="absolute left-0 w-full bg-[#a4cbed]">
                   <div
                     className={`pt-6 text-gray-700 ${
-                      whichDrop === 'products' ? '' : 'hidden'
+                      whichDrop === "products" ? "" : "hidden"
                     } shadow-xl shadow-stone-500/50`}
                   >
                     <div className="p-5 grid grid-cols-4 bg-slate-100">
@@ -133,15 +133,15 @@ export const TopNav1 = () => {
              ---------------------------------------------------------------- */}
               <div
                 className="relative"
-                onMouseEnter={() => setWhichDrop('concert')}
-                onMouseLeave={() => setWhichDrop('')}
+                onMouseEnter={() => setWhichDrop("concert")}
+                onMouseLeave={() => setWhichDrop("")}
               >
                 <a className={`p-2 hover:bg-[#a4cbed]`} href="/">
                   音樂會消息
                 </a>
                 <div
                   className={`absolute flex pt-6 flex-col bg-[#a4cbed] text-gray-700 w-32 ${
-                    whichDrop === 'concert' ? '' : 'hidden'
+                    whichDrop === "concert" ? "" : "hidden"
                   } shadow-xl shadow-stone-500/50`}
                 >
                   <Link
@@ -164,7 +164,7 @@ export const TopNav1 = () => {
                   // ['supportus'].some((el) => pathName.includes(el))
                   //   ? 'bg-[#a4cbed]'
                   //   : ''
-                  ''
+                  ""
                 }`}
                 href="/supportus"
               >
@@ -202,7 +202,7 @@ export const TopNav1 = () => {
       <div>
         <div
           className={`${
-            showMenuPanel ? 'absolute' : 'hidden'
+            showMenuPanel ? "absolute" : "hidden"
           } top-0 left-0 w-full h-screen bg-gray-900/60`}
           onClick={() => setShowMenuPanel(false)}
         >
@@ -210,7 +210,7 @@ export const TopNav1 = () => {
         </div>
         <div
           className={`fixed top-0 left-0 h-screen w-[90%] max-w-[320px] bg-white transition-all duration-300 ${
-            showMenuPanel ? '' : '-translate-x-full'
+            showMenuPanel ? "" : "-translate-x-full"
           }`}
           tabIndex={-1}
         >
@@ -244,16 +244,16 @@ export const TopNav1 = () => {
             <div
               className="relative text-gray-800 font-bold py-1 cursor-pointer"
               onClick={() =>
-                whichDrop !== 'm-aboutus'
-                  ? setWhichDrop('m-aboutus')
-                  : setWhichDrop('')
+                whichDrop !== "m-aboutus"
+                  ? setWhichDrop("m-aboutus")
+                  : setWhichDrop("")
               }
             >
               關於我們
             </div>
             <div
               className={`flex flex-col ${
-                whichDrop === 'm-aboutus' ? '' : 'hidden'
+                whichDrop === "m-aboutus" ? "" : "hidden"
               }`}
             >
               <a className="relative py-1 pl-2 hover:bg-[#a4cbed] cursor-pointer">
@@ -287,16 +287,16 @@ export const TopNav1 = () => {
             <div
               className="relative text-gray-800 font-bold py-1 cursor-pointer"
               onClick={() =>
-                whichDrop !== 'm-products'
-                  ? setWhichDrop('m-products')
-                  : setWhichDrop('')
+                whichDrop !== "m-products"
+                  ? setWhichDrop("m-products")
+                  : setWhichDrop("")
               }
             >
               產品區
             </div>
             <div
               className={`flex flex-col ${
-                whichDrop === 'm-products' ? '' : 'hidden'
+                whichDrop === "m-products" ? "" : "hidden"
               }`}
             >
               {albumList.map((album) => (
@@ -320,16 +320,16 @@ export const TopNav1 = () => {
             <div
               className="relative text-gray-800 font-bold py-1 cursor-pointer"
               onClick={() =>
-                whichDrop !== 'm-concert'
-                  ? setWhichDrop('m-concert')
-                  : setWhichDrop('')
+                whichDrop !== "m-concert"
+                  ? setWhichDrop("m-concert")
+                  : setWhichDrop("")
               }
             >
               音樂會消息
             </div>
             <div
               className={`flex flex-col ${
-                whichDrop === 'm-concert' ? '' : 'hidden'
+                whichDrop === "m-concert" ? "" : "hidden"
               }`}
             >
               <Link
